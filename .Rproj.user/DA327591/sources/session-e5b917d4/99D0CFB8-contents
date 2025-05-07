@@ -1,0 +1,135 @@
+---
+title: "Bahia Blanca"
+author: "ezequiel1593"
+date: "2025-05-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(here)
+rm(list=ls())
+
+#CÁLCULO DE TEMPERATURAS MEDIAS MENSUALES
+
+#Se define a la temperatura media mensual como el promedio dentro de un mes de los datos horarios
+#correspondientes a laS horaS 3, 9, 15 y 21 HOA (6z,12z,18z y 0z, respectivamente).
+
+#No se computa si el porcentaje de datos completos excluyendo el dato de las 6z es inferior al 90%.
+
+#Si no se dispone de manera total o parcial (el porcentaje de faltantes debe exceder el 10%) del
+#dato de las 6z, se aplica un FACTOR DE CORRECCION.
+
+#Este factor de corrección se aplicará siempre que se cuente con al menos el 90% de los datos de las 6z
+
+listado_archivos_horarios <- list.files('D:/Datos Estaciones/Datos horarios/',pattern="*.txt",full.names = T)
+recortar_nombre <- function(x) {substr(x,36,nchar(x)-4)}
+listado_archivos_horarios_abreviado <- as.vector(sapply(listado_archivos_horarios, function(x) { recortar_nombre(x) } ))
+
+nombre_estacion <- 'Catamarca Aero' #readline('Nombre de la estación: ')
+nro_hor <- match(nombre_estacion,listado_archivos_horarios_abreviado)
+
+#Dataframe con los datos horarios
+datos_horarios <- read.table(listado_archivos_horarios[nro_hor],
+                             header = TRUE, col.names = c('A','M','D','H','Temp'),
+                             na.strings = c(NA,''),
+                             dec = ".",
+                             fill = TRUE)
+
+#Funciones generales
+#Función para saber si un año es bisiesto o no
+#Un año es bisiesto si es divisible por 4, pero no por 100 a menos que también sea divisible por 400
+es_bisiesto <- function(anio) { return((anio %% 4 == 0 & anio %% 100 != 0) | anio %% 400 == 0) }
+
+#Computación de Porcentaje de Datos Completos (CPDC)
+cpdc <- function(horas){
+  #Me quedo solo con los datos de las horas que quiero
+  horarias <- subset(datos_horarios, H %in% horas)
+  
+  #Cantidad de datos por mes y por año que no son NA, que luego convertiré a porcentaje
+  #Porcentaje de Datos Completos (pdc)
+  pdc <- tapply(horarias$Temp, list(horarias$A, horarias$M), function(x) sum(!is.na(x)) )
+  
+  dias_al_mes <- c(31,28,31,30,31,30,31,31,30,31,30,31)
+  anio_no_bisiesto <- dias_al_mes * length(horas)
+  anio_bisiesto <- anio_no_bisiesto + c(0,length(horas),rep(0,10))
+  
+  #Cambio los valores de la tabla por el porcentaje de datos disponibles respecto al máximo posible
+  for (anio in row.names(pdc)) {
+    if (es_bisiesto(as.numeric(anio))) {
+      for (mes in 1:12) { pdc[anio,mes] <- round((pdc[anio,mes] / anio_bisiesto[mes])*100,digits = 1) }
+    } else {
+      for (mes in 1:12) { pdc[anio,mes] <- round((pdc[anio,mes] / anio_no_bisiesto[mes])*100,digits = 1) }
+    }
+  }
+  return(pdc)
+}
+#Fin de funciones generales
+
+#Computo porcentaje de datos completos, con y sin el dato de las 6z
+porcentaje_datos_completos <- cpdc(horas = c(3,9,15,21))
+porcentaje_datos_completos_sin6z <- cpdc(horas = c(9,15,21))
+
+#Ahora elaboro una tabla con los valores medios, incluyendo o no el dato de las 6z
+dhp <- subset(datos_horarios, H %in% c(3,9,15,21))
+tabla.medias_mensuales <- tapply(dhp$Temp, list(dhp$A, dhp$M), function(x) round(mean(x,na.rm=TRUE),digits = 1) )
+
+dhp_sin6z <- subset(datos_horarios, H %in% c(9,15,21))
+tabla.medias_mensuales_sin6z <- tapply(dhp_sin6z$Temp, list(dhp_sin6z$A, dhp_sin6z$M),
+                                       function(x) round(mean(x,na.rm=TRUE),digits = 1) )
+
+#Descarto de forma permanente las temperaturas medias de los casos donde el porcentaje de datos completos sin 6z es inferior al 90%
+tabla.medias_mensuales[ which(porcentaje_datos_completos_sin6z < 90) ] <- NA
+tabla.medias_mensuales_sin6z[ which(porcentaje_datos_completos_sin6z < 90) ] <- NA
+
+#---------FACTOR DE CORRECCIÓN
+#Descarto las temperaturas medias de los casos donde el porcentaje de datos completos (con 6z) es inferior al 95%
+#Se utilizaran copias
+copia.tabla.medias_mensuales <- tabla.medias_mensuales
+copia.tabla.medias_mensuales_sin6z <- tabla.medias_mensuales_sin6z
+copia.tabla.medias_mensuales[ which(porcentaje_datos_completos < 95) ] <- NA
+copia.tabla.medias_mensuales_sin6z[ which(porcentaje_datos_completos < 95) ] <- NA
+
+#Para cada mes calculo la temperatura media de los ultimos 30 datos no NA, el año final es el 2020
+seleccionar_ultimos_30_no_na <- function(x) tail(na.omit(x), 30)
+
+datos_anteriores_2020 <- copia.tabla.medias_mensuales[ as.numeric(rownames(copia.tabla.medias_mensuales)) <= 2020, ]
+ultimos30datos <- apply(datos_anteriores_2020, 2, seleccionar_ultimos_30_no_na)
+medias_ultimos30datos.con6z <- colMeans(ultimos30datos, na.rm = TRUE)
+
+datos_anteriores_2020_sin6z <- copia.tabla.medias_mensuales_sin6z[ as.numeric(rownames(copia.tabla.medias_mensuales_sin6z)) <= 2020, ]
+ultimos30datos_sin6z <- apply(datos_anteriores_2020_sin6z, 2, seleccionar_ultimos_30_no_na)
+medias_ultimos30datos.sin6z <- colMeans(ultimos30datos_sin6z, na.rm = TRUE)
+
+#Ahora tengo los datos de corrección
+Factores_de_correccion <- round( medias_ultimos30datos.con6z - medias_ultimos30datos.sin6z ,digits = 1)
+#-----------------------------
+
+#Aplico factores de corrección
+
+porcentaje_datos6z <- cpdc(horas = c(3))
+
+#La anterior tabla puede quedar incompleta, tengo que rellenarla:
+# Crear una nueva matriz con todos los años
+primer_año <- as.numeric(rownames(porcentaje_datos_completos)[1])
+ultimo_año <- as.numeric(rownames(porcentaje_datos_completos)[nrow(porcentaje_datos_completos)])
+todos_los_años <- as.character(seq(primer_año, ultimo_año))
+nueva_tabla <- matrix(0,nrow = length(todos_los_años), ncol = 12,
+                      dimnames = list(todos_los_años,1:12))
+# Copiar los datos existentes a la nueva tabla
+for (año in rownames(porcentaje_datos6z)) { nueva_tabla[año, ] <- porcentaje_datos6z[año, ] }
+# Asignar la nueva tabla a porcentaje_datos6z
+porcentaje_datos6z <- nueva_tabla
+# Reemplazo NA con 0, asi no tengo error en la aplicación de los factores de corrección
+porcentaje_datos6z <- replace(porcentaje_datos6z, is.na(porcentaje_datos6z), 0)
+
+#Aplico factores de corrección
+for (fila in 1:nrow(tabla.medias_mensuales)) {
+  for (columna in 1:12) {
+    factor_correccion <- Factores_de_correccion[columna]
+    valor_a_corregir <- tabla.medias_mensuales_sin6z[fila,columna]
+    porcentaje <- porcentaje_datos6z[fila, columna]
+    if ((!is.na(valor_a_corregir)) & (porcentaje < 90) ) { tabla.medias_mensuales[fila,columna] <- valor_a_corregir + factor_correccion }
+  }
+}
+
+tabla.medias_mensuales

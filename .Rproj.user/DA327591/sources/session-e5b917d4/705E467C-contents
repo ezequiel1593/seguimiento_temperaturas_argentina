@@ -1,0 +1,21 @@
+---
+title: "index"
+author: "ezequiel1593"
+date: "2025-05-07"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+library(here)
+listado_archivos_horarios <- list.files('D:/Datos Estaciones/Datos horarios/',pattern="*.txt",full.names = T)
+recortar_nombre <- function(x) {substr(x,36,nchar(x)-4)}
+#estaciones <- as.vector(sapply(listado_archivos_horarios, function(x) { recortar_nombre(x) } ))
+estaciones <- c("Bahía-Blanca")
+```
+
+```{r links, echo=FALSE}
+cat(paste0("- [", estaciones ,"](estaciones/"), tolower(estaciones), ".html)\n")
+```
+
+
