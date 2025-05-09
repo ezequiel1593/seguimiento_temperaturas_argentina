@@ -1,5 +1,12 @@
 <b>Factores de corrección</b><br>
-Cada mes cuenta con un factor de corrección. Para determinarlo, se comienza calculando todas las temperaturas medias mensuales previas al año 2021, con <b>(1)</b> y sin <b>(2)</b> el dato 
-de las 6z, toda vez que el porcentaje de datos faltantes no supere el 5%. Los que no cumplen con este requisito, quedan computados como NA. Luego, se seleccionan los últimos 30 pares de 
-datos que no sean NA, para entonces hacer la diferencia entre el valor promedio de los datos correspondientes a la tabla <b>(2)</b> y los de la tabla <b>(1)</b>. Esta diferencia es el 
-factor de corrección del mes para el cual se está realizando el cálculo. No siempre se dispone de los 30 partes de datos no NA, en esos casos se toma el mayor número de pares posible.
+Cada mes cuenta con un factor de corrección. El algoritmo para determinarlo es el siguiente:
+<ol>
+  <li>Seleccionar datos horarios previos al año 2021.</li>
+  <li>Seleccionar datos horarios correspondientes a horas principales (3,9,15,21 HOA).</li>
+  <li>Para cada día, calcular una temperatura media con los datos de las horas 9, 15 y 21. Si hay faltantes, el resultado es NA.</li>
+  <li>Para cada día, calcular una temperatura media con los datos de las horas 3, 9, 15 y 21. Si hay faltantes, el resultado es NA.</li>
+  <li>Si el resultado de hacer <b>3</b> es NA, remover el día. Hacer lo mismo si el resultado de hacer <b>4</b> es NA.</li>
+  <li>Para cada día, hacer la diferencia entre la temperatura media calculada en <b>3</b> y la temperatura media calculada en <b>4</b>.</li>
+  <li>Para cada mes, seleccionar las últimas 300 diferencias, o la cantidad máxima disponible.</li>
+  <li>Para cada mes, realizar el promedio de las diferencias consideradas en el punto anterior. Este promedio es el factor de corrección.</li>
+</ol>
