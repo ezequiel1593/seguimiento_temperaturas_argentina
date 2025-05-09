@@ -60,12 +60,12 @@ conocidas como 6z, 12z, 18z y 0z).<br>
 Por diferentes razones, puede ocurrir que de forma temporal las observaciones se vean limitadas a horarios diurnos, o a horarios que no incluyan a la observación de las 6z, lo que ocasiona 
 que no se pueda calcular una TMM. Para estos casos, se recurre a la elaboración de un factor de corrección, que en términos generales consiste en la diferencia promedio entre la TMM calculada 
 sin y con la observación de las 6z. Así, cada vez que falten las observaciones de las 6z y esto impida el cálculo de una TMM, se promedian las horarias restantes, y a este promedio se le suma 
-el factor de corrección que corresponda. Así es como de manera oficial se calcula una TMM en Argentina. Entre otras variables, aparece publicada en los mensajes CLIMAT 
-(ver <a href="https://www.ogimet.com/gclimat.phtml">Ogimet</a>). En otros países el procedimiento es diferente. En este <a href="metodologia/factores_de_correccion.html">enlace</a> se describe 
-el cálculo de los factores de corrección utilizados (si fue necesario) en las TMM presentes en esta página.<br>
+el factor de corrección que corresponda. Así es como de manera oficial se calcula una TMM en Argentina (ver mensajes CLIMAT publicados en <a href="https://www.ogimet.com/gclimat.phtml">Ogimet</a>). 
+En otros países el procedimiento es diferente. En este <a href="metodologia/factores_de_correccion.html">enlace</a> se describe el cálculo de los factores de corrección utilizados en las TMM 
+presentes en esta página.<br>
 El algoritmo usado para calcular las TMM fue el siguiente:
   <ol>
-  <li>Seleccionar sólo los datos horarios correspondientes a las horas principales.</li>
+  <li>Seleccionar los datos horarios correspondientes a las horas principales.</li>
   <li>Agrupar los datos por mes y año.</li>
   <li>Para cada grupo, calcular el porcentaje de datos faltantes para cada hora principal.</li>
   <li>Si el porcentaje mencionado en <b>3</b> no supera el 10% para ninguna hora principal, promediar todas las observaciones dentro del grupo. Esta será su TMM.</li>
