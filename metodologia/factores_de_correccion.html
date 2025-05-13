@@ -6,11 +6,11 @@ Cada mes cuenta con un factor de corrección. El algoritmo para determinarlo es 
   <li>Para cada día, calcular una temperatura media con los datos de las horas 9, 15 y 21. Si hay faltantes, el resultado es NA.</li>
   <li>Para cada día, calcular una temperatura media con los datos de las horas 3, 9, 15 y 21. Si hay faltantes, el resultado es NA.</li>
   <li>Si el resultado de hacer <b>3</b> es NA, remover el día. Hacer lo mismo si el resultado de hacer <b>4</b> es NA.</li>
-  <li>Para cada día, hacer la diferencia entre la temperatura media calculada en <b>3</b> y la temperatura media calculada en <b>4</b>.</li>
+  <li>Para cada día, hacer la diferencia entre la temperatura media calculada en <b>4</b> y la temperatura media calculada en <b>3</b>.</li>
   <li>Para cada mes, seleccionar las últimas 300 diferencias, o la cantidad máxima disponible.</li>
   <li>Para cada mes, realizar el promedio de las diferencias consideradas en el punto anterior. Este promedio es el factor de corrección.</li>
 </ol>
-
+<p>La siguiente tabla muestra los factores de corrección mensuales de cada estación, junto a la cantidad de diferencias diarias usadas (n).</p>
 <style>
 table, th, td {
   border:1px solid black;
