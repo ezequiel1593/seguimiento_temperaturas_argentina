@@ -1,4 +1,36 @@
-<b>Factores de corrección</b><br>
+<head> <link rel="stylesheet" href="style.css"> </head>
+<!-- MENSUAL -->
+<p><b>Cálculo de la temperatura media mensual.</b><br>
+La temperatura media mensual (TMM) es el resultado de promediar todos los datos de temperatura observados durante el mes en las horas principales 3, 9, 15 y 21 HOA (6, 12, 18 y 00 UTC, también 
+conocidas como 6z, 12z, 18z y 0z).<br>
+Por diferentes razones, puede ocurrir que de forma temporal las observaciones se vean limitadas a horarios diurnos, o a horarios que no incluyan a la observación de las 6z, lo que ocasiona 
+que no se pueda calcular una TMM. Para estos casos, se recurre a la elaboración de un factor de corrección, que en términos generales consiste en la diferencia promedio entre la TMM calculada 
+sin y con la observación de las 6z. Así, cada vez que falten las observaciones de las 6z y esto impida el cálculo de una TMM, se promedian las horarias restantes, y a este promedio se le suma 
+el factor de corrección que corresponda. Así es como de manera oficial se calcula una TMM en Argentina (ver mensajes CLIMAT publicados en <a href="https://www.ogimet.com/gclimat.phtml">Ogimet</a>). 
+En otros países el procedimiento es diferente. En este <a href="metodologia/factores_de_correccion.html">enlace</a> se describe el cálculo de los factores de corrección utilizados en las TMM 
+presentes en esta página.<br>
+El algoritmo usado para calcular las TMM fue el siguiente:
+  <ol>
+  <li>Seleccionar los datos horarios correspondientes a las horas principales.</li>
+  <li>Agrupar los datos por mes y año.</li>
+  <li>Para cada grupo, calcular el porcentaje de datos faltantes para cada hora principal.</li>
+  <li>Si el porcentaje mencionado en <b>3</b> no supera el 10% para ninguna hora principal, promediar todas las observaciones dentro del grupo. Esta será su TMM.</li>
+  <li>Si el porcentaje mencionado en <b>3</b> supera el 10% para la hora principal 9, 15 o 21, la TMM será igual a NA.</li>
+  <li>Si el porcentaje mencionado en <b>3</b> supera el 10% para la hora principal 3, pero no para las horas principales 9, 15 o 21, promediar estas últimas observaciones y sumarle el factor 
+    de corrección que le corresponda. Esta será su TMM.</li>
+</ol>
+</p>
+
+<!-- ESTACIONAL Y ANUAL -->
+<p><b>Cálculo de la temperatura media estacional y la temperatura media anual.</b><br>
+En el hemisferio sur, el verano climatológico comprende los meses de diciembre, enero y febrero (DEF), el otoño climatológico los meses de marzo, abril y mayo (MAM), el invierno 
+climatológico los meses de junio, julio y agosto (JJA), y la primavera climatológica los meses de septiembre, octubre y noviembre (SON). La temperatura media estacional (TME) es 
+el promedio de las TMM que conforman la estación climatológica en cuestión. Como ya se mencionó, el verano comprende el mes de diciembre del año A y los meses de enero y febrero del año 
+siguiente, A+1, por lo que su TME aparecerá computada para este último año. <br>
+Por otra parte, la temperatura media anual (TMA) es el promedio de las 12 TMM que comprenden el año. Es requisito tanto para la TME como para la TMA que no falte el dato de ningún mes. </p>
+
+<!-- FACTORES DE CORRECCIÓN -->
+<p><b>Factores de corrección</b><br>
 Cada mes cuenta con un factor de corrección. El algoritmo para determinarlo es el siguiente:
 <ol>
   <li>Seleccionar datos horarios previos al año 2021.</li>
@@ -1537,4 +1569,5 @@ table, th, td {
   </tr>
 </tbody>
 </table>
-
+</p>
+<p><b>Última actualización: 14 de mayo del 2025.</b></p>
