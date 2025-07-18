@@ -1,0 +1,30 @@
+JUNIO 2025
+
+Estacion	Tipo	Dia	Nuevo Valor
+Aeroparque	Máxima más baja	30	5.7
+Azul Aero	Máxima más baja	29	4.3
+Chapelco Aero	Mínima más baja	29	-13.5
+Chapelco Aero	Mínima más baja	30	-15
+Chepes	Mínima más baja	30	-6.6
+El Bolsón Aero	Mínima más baja	30	-10.5
+El Palomar Aero	Máxima más baja	30	5
+Ezeiza Aero	Máxima más baja	30	4.5
+Jujuy Aero	Máxima más baja	30	5
+La Plata Aero	Máxima más baja	30	4
+Las Flores	Máxima más baja	29	5.4
+Las Flores	Máxima más baja	30	6
+Mercedes Aero	Máxima más baja	30	10.5
+Metán	Máxima más baja	30	3.6
+Morón Aero	Máxima más baja	30	4.9
+Olavarría Aero	Máxima más baja	29	4.5
+Pehuajó Aero	Máxima más baja	29	5.3
+Puerto Deseado Aero	Mínima más baja	30	-11.5
+Rio Grande B.A.	Mínima más alta	11	7.2
+Salta Aero	Máxima más baja	30	3
+San Fernando Aero	Máxima más baja	30	4.7
+San Rafael Aero	Mínima más baja	30	-8.4
+Santa Rosa del Conlara Aero	Mínima más baja	30	-11.8
+Santa Rosa del Conlara Aero	Máxima más baja	29	3.4
+Tandil Aero	Máxima más baja	29	4
+Villa Dolores Aero	Mínima más baja	30	-8.4
+Villa Gesell Aero	Máxima más baja	29	7
