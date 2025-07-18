@@ -1,6 +1,120 @@
-JUNIO 2025
+DIAS DONDE SE HA IGUALADO O SUPERADO UN RECORD DE TEMPERATURA MÍNIMA O MÁXIMA
+EXISTEN 4 COLUMNAS
+ESTACIÓN: Nombre de la estación meteorológica
+TIPO: Especifica si se trata de la temperatura diaria mínima/máxima, valor más bajo/más alto
+DIA: Día de ocurrencia
+VALOR ALCANZADO: Cual fue el valor de temperatura alcanzado, en °C
 
-Estacion	                  Tipo	          Dia	Nuevo Valor
+ENERO 2025
+Maquinchao  	Máxima más alta	30	39.0
+Mendoza Aero	Mínima más alta	15	27.7
+Neuquén Aero	Mínima más alta	30	27.6
+Trelew Aero 	Máxima más alta	12	43.6
+
+FEBRERO 2025
+Azul Aero                         	Máxima más alta	10	38.1
+Base Carlini                      	Máxima más baja	25	-2.3
+Benito Juárez Aero                	Mínima más baja	18	 1.0
+Catamarca Aero                    	Mínima más alta	10	30.8
+Ceres Aero                        	Mínima más alta	24	28.4
+Chamical Aero                     	Mínima más alta	24	29.0
+Chepes                            	Mínima más alta	10	27.5
+Chepes                            	Máxima más alta	 9	41.5
+Concordia Aero                    	Máxima más alta	 5	41.4
+Concordia Aero                    	Máxima más alta	10	41.8
+Concordia Aero                    	Máxima más alta	11	41.0
+Córdoba Observatorio              	Mínima más alta	10	27.1
+Córdoba Observatorio              	Mínima más alta	24	27.1
+Córdoba Observatorio              	Máxima más alta	24	42.2
+Córdoba Observatorio 1873-2025.txt	Mínima más alta	10	27.1
+Córdoba Observatorio 1873-2025.txt	Mínima más alta	24	27.1
+Córdoba Observatorio 1873-2025.txt	Máxima más alta	24	42.2
+La Rioja Aero                     	Máxima más alta	 9	44.2
+La Rioja Aero                     	Máxima más alta	10	45.0
+Las Flores                        	Máxima más alta	10	39.5
+Malargüe Aero                     	Máxima más alta	10	36.6
+Mar del Plata Aero                	Máxima más alta	10	39.9
+Mendoza Aero                      	Mínima más alta	 7	25.7
+Mendoza Aero                      	Mínima más alta	 8	26.7
+Mendoza Aero                      	Mínima más alta	23	26.6
+Mendoza Aero                      	Mínima más alta	24	27.0
+Olavarría Aero                    	Máxima más alta	10	37.5
+Olavarría Aero                    	Máxima más alta	21	37.7
+Pigüé Aero                        	Mínima más alta	22	23.0
+Pilar Observatorio                	Mínima más alta	 8	24.8
+Pilar Observatorio                	Máxima más alta	 8	41.2
+Reconquista Aero                  	Mínima más alta	11	30.0
+Reconquista Aero                  	Máxima más alta	 5	43.5
+Reconquista Aero                  	Máxima más alta	11	43.7
+Rivadavia                         	Máxima más alta	 4	46.5
+Rivadavia                         	Máxima más alta	 5	45.0
+San Luis Aero                     	Mínima más alta	10	29.6
+San Luis Aero                     	Mínima más alta	23	28.5
+San Luis Aero                     	Máxima más alta	10	40.7
+San Martín Mza                    	Máxima más alta	10	42.7
+Santa Rosa del Conlara Aero       	Mínima más alta	 8	24.0
+Santa Rosa del Conlara Aero       	Mínima más alta	23	23.6
+Santa Rosa del Conlara Aero       	Mínima más alta	24	25.5
+Santa Rosa del Conlara Aero       	Máxima más alta	22	40.6
+Santa Rosa del Conlara Aero       	Máxima más alta	23	40.1
+Tinogasta                         	Mínima más alta	24	26.5
+Tucumán Aero                      	Máxima más alta	10	41.7
+Uspallata Aero                    	Máxima más alta	10	36.7
+Venado Tuerto Aero                	Mínima más alta	22	24.2
+Victorica Aero                    	Máxima más alta	22	41.1
+
+MARZO 2025
+Catamarca Aero             	Mínima más alta	 5	29.0
+Chepes                     	Mínima más alta	 7	27.0
+Corrientes Aero            	Máxima más alta	 3	41.3
+Corrientes Aero            	Máxima más alta	 4	41.4
+Corrientes Aero            	Máxima más alta	 5	40.6
+Iguazú Aero                	Mínima más alta	 3	25.0
+Iguazú Aero                	Mínima más alta	 4	24.8
+Ituzaingó                  	Máxima más alta	 3	40.0
+Ituzaingó                  	Máxima más alta	 4	40.0
+Ituzaingó                  	Máxima más alta	 5	40.0
+Laboulaye Aero             	Mínima más alta	 5	23.8
+Las Flores                 	Mínima más alta	 7	24.5
+Mercedes Aero              	Mínima más alta	 4	26.2
+Metán                      	Máxima más alta	 1	38.0
+Oberá                      	Mínima más alta	 3	27.0
+Posadas Aero               	Mínima más alta	 3	26.9
+Posadas Aero               	Mínima más alta	 4	26.8
+Posadas Aero               	Mínima más alta	 5	27.1
+Resistencia Aero           	Mínima más alta	 1	27.4
+Resistencia Aero           	Máxima más alta	 2	41.8
+Resistencia Aero           	Máxima más alta	 3	43.3
+Resistencia Aero           	Máxima más alta	 4	42.5
+Resistencia Aero           	Máxima más alta	 5	42.0
+San Fernando Aero          	Mínima más alta	 6	26.0
+San Fernando Aero          	Mínima más alta	 7	25.2
+Santa Rosa del Conlara Aero	Máxima más baja	24	13.0
+Santiago del Estero Aero   	Mínima más alta	 7	29.0
+Sauce Viejo Aero           	Mínima más alta	 5	27.8
+Sauce Viejo Aero           	Mínima más alta	 6	27.1
+Venado Tuerto Aero         	Mínima más alta	 5	24.5
+Venado Tuerto Aero         	Mínima más alta	 6	25.0
+Venado Tuerto Aero         	Mínima más alta	 7	23.5
+Villa Dolores Aero         	Máxima más baja	24	12.7
+Villa Dolores Aero         	Mínima más alta	 7	28.3
+
+ABRIL 2025
+Base San Martín       	Mínima más alta	21	 3.3
+La Quiaca Observatorio	Máxima más baja	23	10.2
+
+MAYO 2025
+Bernardo de Irigoyen Aero         	Máxima más baja	29	 7.3
+Córdoba Observatorio              	Mínima más alta	 4	20.1
+Córdoba Observatorio              	Mínima más alta	16	20.9
+Olavarría Aero                    	Mínima más alta	16	17.6
+Pilar Observatorio                	Mínima más alta	16	20.5
+San Antonio Oeste Aero            	Máxima más baja	21	 7.2
+Santa Rosa del Conlara Aero       	Mínima más alta	16	16.2
+Santa Rosa del Conlara Aero       	Mínima más alta	17	16.2
+Villa Gesell Aero                 	Mínima más alta	16	17.2
+
+JUNIO 2025
 Aeroparque                 	Máxima más baja	30	  5.7
 Azul Aero                  	Máxima más baja	29	  4.3
 Chapelco Aero              	Mínima más baja	29	-13.5
