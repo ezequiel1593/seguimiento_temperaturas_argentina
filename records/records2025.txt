@@ -26,9 +26,6 @@ Concordia Aero                    	Máxima más alta	11	41.0
 Córdoba Observatorio              	Mínima más alta	10	27.1
 Córdoba Observatorio              	Mínima más alta	24	27.1
 Córdoba Observatorio              	Máxima más alta	24	42.2
-Córdoba Observatorio 1873-2025.txt	Mínima más alta	10	27.1
-Córdoba Observatorio 1873-2025.txt	Mínima más alta	24	27.1
-Córdoba Observatorio 1873-2025.txt	Máxima más alta	24	42.2
 La Rioja Aero                     	Máxima más alta	 9	44.2
 La Rioja Aero                     	Máxima más alta	10	45.0
 Las Flores                        	Máxima más alta	10	39.5
