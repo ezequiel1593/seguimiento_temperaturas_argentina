@@ -1,6 +1,6 @@
 DIAS DONDE SE HA IGUALADO O SUPERADO UN RECORD DE TEMPERATURA MÍNIMA O MÁXIMA
 EXISTEN 4 COLUMNAS
-ESTACIÓN: Nombre de la estación meteorológica
+ESTACIÓN: Nombre de la estación meteorológica, debe contar con al menos 20 años de datos
 TIPO: Especifica si se trata de la temperatura diaria mínima/máxima, valor más bajo/más alto
 DIA: Día de ocurrencia
 VALOR ALCANZADO: Cual fue el valor de temperatura alcanzado, en °C
@@ -139,3 +139,14 @@ Santa Rosa del Conlara Aero	Máxima más baja	29	  3.4
 Tandil Aero                	Máxima más baja	29	  4.0
 Villa Dolores Aero         	Mínima más baja	30	 -8.4
 Villa Gesell Aero          	Máxima más baja	29	  7.0
+
+JULIO 2025
+Concordia Aero      	Mínima más baja	1	 -5.2
+El Palomar Aero     	Mínima más baja	2	 -7.4
+Junin Aero          	Mínima más baja	1	 -8.0
+Mendoza Observatorio	Mínima más baja	1	 -6.0
+Metán               	Máxima más baja	1	  4.2
+Puerto Madryn Aero  	Mínima más baja	1	-11.6
+San Fernando Aero   	Mínima más baja	2	 -5.1
+Trelew Aero         	Mínima más baja	1	-13.2
+Venado Tuerto Aero  	Mínima más baja	1	 -8.0
