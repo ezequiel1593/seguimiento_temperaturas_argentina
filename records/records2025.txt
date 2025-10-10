@@ -150,3 +150,13 @@ Puerto Madryn Aero  	Mínima más baja	1	-11.6
 San Fernando Aero   	Mínima más baja	2	 -5.1
 Trelew Aero         	Mínima más baja	1	-13.2
 Venado Tuerto Aero  	Mínima más baja	1	 -8.0
+
+AGOSTO 2025
+San Antonio Oeste Aero	Máxima más alta	28	29
+
+SEPTIEMBRE 2025
+Base Carlini   	Mínima más alta	12	 1.6
+Base Carlini   	Mínima más alta	13	 2.0
+Base San Martín	Mínima más alta	11	 3.5
+El Bolsón Aero 	Máxima más alta	25	25.9
+Orán Aero      	Máxima más alta	20	42.3
