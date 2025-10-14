@@ -1,30 +1,33 @@
 <p><b><h1>Mejorando los factores de corrección: Un caso de estudio con datos de Bahía Blanca.</h1></b></p>
 
 <p><b><h2>PREGUNTA 1: ¿Qué tan buenas son las estimaciones?</h2></b></p>
-<p>Usaremos datos de Bahía Blanca Aero, desde enero de 1956 hasta el presente (septiembre 2025). Para cada mes y año 
-  se calcula la TMMsin6z, que es la temperatura media mensual sin el dato de las 6z, es decir utilizando todas las horas 
-  principales excepto la de las 6z. Luego, se le resta el factor de correción que corresponda (que es según el mes). Lo 
-  que obtenemos con esta diferencia es una temperatura media mensual estimada, que llamaremos TMM_est. Luego, compararemos 
-  la temperatura media real, TMM, con la TMM_est, haciendo la diferencia entre las dos. A esta diferencia la llamaremos 
-  error de la estimación, aunque en adelante simplemente le diremos "error". Cuando el error es negativo, la TMM fue 
-  sobreestimada (TMM &lt; TMM_est), lo que indica que el factor de corrección "se quedó corto", es decir que tendría que 
-  haber sido más bajo (recordar que todos los factores de corrección son negativos). Por otra parte, cuando el error es 
-  positivo, la TMM fue subestimada (TMM &gt; TMM_est), señal de que el factor de corrección "se pasó de largo", ya que 
-  tendría que haber sido más alto (un valor absoluto más bajo).</p>
+<p>Se usaron datos de Bahía Blanca Aero. Para cada mes calendario desde enero de 1956 hasta el presente (septiembre 2025) 
+  se calculó la TMMsin6z, que es la temperatura media mensual utilizando todas las horas principales excepto la de las 6z, 
+  y la TMM, que es la temperatura media mensual utilizando todas las horas principales. En ambos casos, en ninguna hora 
+  principal el porcentaje de datos faltantes debe superar el 10%. <br>
+  Adicionalmente, se calculó la TMM_est, que es la temperatura media mensual estimada, que consiste en restarle el factor 
+  de corrección que corresponda (según el mes) a la TMMsin6z. Finalmente, se determinaron los errores de estimación, haciendo 
+  la diferencia TMM - TMM_est. Cuando el error es negativo, se dice que sobreestimó la temperatura media mensual (TMM &lt; TMM_est), 
+  lo que indica que el factor de corrección "se quedó corto", es decir que tendría que haber sido más bajo (recordar que todos 
+  los factores de corrección son negativos). Por otra parte, cuando el error es positivo, la temperatura media mensual 
+  fue subestimada (TMM &gt; TMM_est), señal de que el factor de corrección "se pasó de largo", ya que tendría que haber sido 
+  más alto (un valor absoluto más bajo).</p>
 <p>La siguiente tabla muestra, para cada mes del año, los errores de estimación más bajos y más altos de toda la serie, así 
 como también el promedio de los valores absolutos de estos errores (PVAE).</p>
 
 <p>En general, las estimaciones son muy buenas, los PVAE rondan entre 0.1°C y 0.2°C (teniendo en mente la incertidumbre 
-  misma de la observación). Sin embargo, algunas estimaciones puntuales no fueron tan buenas, con errores absolutos de 
-  hasta 0.6°C, lo que nos conduce a la siguente pregunta. </p>
+  misma de la observación). Sin embargo, algunas estimaciones puntuales no fueron tan buenas, con errores de hasta 0.6°C 
+  (en módulo).</p>
 
 <p><b><h2>PREGUNTA 2: ¿Cuando no son buenas las estimaciones?</h2></b></p>
-<p>Si bien en general las estimaciones con muy buenas, nos inquieta que algunos errores de estimación hayan tenido valores 
-  absolutos de 0.5°C o 0.6°C. ¿En qué ocasiones podrían cometerse semejantes errores de estimación? Imaginemos para un 
+<p>Si bien en general las estimaciones con muy buenas, inquieta que algunos errores de estimación hayan tenido valores 
+  absolutos de 0.5°C o 0.6°C. ¿En qué ocasiones los errores de estimación fueron tan grandes? Imaginemos para un 
   mes dado un factor de corrección de -1.7°C y un error de estimación de -0.6°C. Para que TMM = TMM_est, el factor de 
   corrección tendría que haber sido de -2.3°C. Podríamos conjeturar que se trató de un mes con una amplitud térmica mucho 
   más alta que lo habitual, lo que hizo que el factor de corrección no sea lo suficientemente bajo como para compensar 
   la mayor diferencia entre las temperaturas observadas a la madrugada y las observadas durante el día. Para el caso de 
   un error de estimación positivo importante, de 0.5°C o 0.6°C, la situación sería la inversa, y podriamos especular con 
   que se trató de un mes con una amplitud térmica bastante inferior a la normal.</p>
-<p>El siguiente gráfico muestra</p>
+<p>El siguiente gráfico muestra la relación que existe entre las anomalías de amplitud térmica y los errores de estimación.</p>
+
+
