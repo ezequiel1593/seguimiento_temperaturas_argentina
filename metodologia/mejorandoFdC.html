@@ -1,6 +1,6 @@
 <p><b><h1>Mejorando los factores de corrección: Un caso de estudio con datos de Bahía Blanca.</h1></b></p>
 
-<p><b><h2>¿Qué tan buenas son las estimaciones?</h2></b></p>
+<p><b><h2>PREGUNTA 1: ¿Qué tan buenas son las estimaciones?</h2></b></p>
 <p>Usaremos datos de Bahía Blanca Aero, desde enero de 1956 hasta el presente (septiembre 2025). Para cada mes y año 
   se calcula la TMMsin6z, que es la temperatura media mensual sin el dato de las 6z, es decir utilizando todas las horas 
   principales excepto la de las 6z. Luego, se le resta el factor de correción que corresponda (que es según el mes). Lo 
@@ -13,3 +13,18 @@
   tendría que haber sido más alto (un valor absoluto más bajo).</p>
 <p>La siguiente tabla muestra, para cada mes del año, los errores de estimación más bajos y más altos de toda la serie, así 
 como también el promedio de los valores absolutos de estos errores (PVAE).</p>
+
+<p>En general, las estimaciones son muy buenas, los PVAE rondan entre 0.1°C y 0.2°C (teniendo en mente la incertidumbre 
+  misma de la observación). Sin embargo, algunas estimaciones puntuales no fueron tan buenas, con errores absolutos de 
+  hasta 0.6°C, lo que nos conduce a la siguente pregunta. </p>
+
+<p><b><h2>PREGUNTA 2: ¿Cuando no son buenas las estimaciones?</h2></b></p>
+<p>¿Cuando no son buenas las estimaciones? ¿Es posible encontrar algún patrón? 
+  Comencemos considerando el siguiente planteamiento. Como ya se mencionó en párrafos anteriores, un error de estimación negativo indica que el factor de 
+  corrección tendría que haber sido más bajo. Por ejemplo, imaginemos para un dado mes un factor de corrección de -1.7°C 
+  y un error de estimación de -0.6°C. Para que TMM = TMM_est, el factor de corrección tendría que haber sido de -2.3°C. La 
+  diferencia entre la TMMsin6z y el valor promedio de las 6z fue lo suficientemente alta como para que el factor de correción 
+  no sea suficiente para compensar esta diferencia. Entonces, podríamos imaginar que se trató de un mes con una amplitud 
+  térmica mucho más alta que lo habitual. Para el caso de un error de estimación positivo, del orden de 0.5°C-0.6°C, la 
+  situación sería la inversa, y podriamos imaginar que se trató de un mes con una amplitud térmica inferior a la normal.
+</p>
