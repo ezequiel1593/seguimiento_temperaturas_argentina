@@ -5,7 +5,11 @@
   se calcula la TMMsin6z, que es la temperatura media mensual sin el dato de las 6z, es decir utilizando todas las horas 
   principales excepto la de las 6z. Luego, se le resta el factor de correción que corresponda (que es según el mes). Lo 
   que obtenemos con esta diferencia es una temperatura media mensual estimada, que llamaremos TMM_est. Luego, compararemos 
-  cada TMM_est con la temperatura media real, TMM, haciendo la diferencia entre las dos. A esta diferencia la llamaremos 
-  error de la estimación, aunque en adelante simplemente le diremos "error". Cuando el error es positivo, la TMM fue 
-  sobreestimada, lo que indica que 
-</p>
+  la temperatura media real, TMM, con la TMM_est, haciendo la diferencia entre las dos. A esta diferencia la llamaremos 
+  error de la estimación, aunque en adelante simplemente le diremos "error". Cuando el error es negativo, la TMM fue 
+  sobreestimada (TMM &lt; TMM_est), lo que indica que el factor de corrección "se quedó corto", es decir que tendría que 
+  haber sido más bajo (recordar que todos los factores de corrección son negativos). Por otra parte, cuando el error es 
+  positivo, la TMM fue subestimada (TMM &gt; TMM_est), señal de que el factor de corrección "se pasó de largo", ya que 
+  tendría que haber sido más alto (un valor absoluto más bajo).</p>
+<p>La siguiente tabla muestra, para cada mes del año, los errores de estimación más bajos y más altos de toda la serie, así 
+como también el promedio de los valores absolutos de estos errores (PVAE).</p>
