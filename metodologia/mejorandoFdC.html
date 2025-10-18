@@ -29,23 +29,27 @@ como también el promedio de los valores absolutos de estos errores (PVAE).</p>
   la mayor diferencia entre las temperaturas observadas a la madrugada y las observadas durante el día. Para el caso de 
   un error de estimación positivo importante, de 0.5°C o 0.6°C, la situación sería la inversa, y podriamos especular con 
   que se trató de un mes con una amplitud térmica bastante inferior a la normal.</p>
+<p>Para a prueba esta hipótesis, para cada mes calendario adicionalmente se calculó la anomalía de la amplitud térmica, 
+  ATT. Este cálculo consiste en determinar la amplitud térmica diaria (diferencia entre la temperatura máxima y la 
+  temperatura mínima), para luego hacer el promedio mensual de estos valores diarios, siempre que la cantidad de datos 
+  faltantes no supere el 15%. Las anomalías son respecto a los valores mensuales normales del período 1991-2020.</p>
 
-<p>El siguiente gráfico muestra la relación que existe entre las anomalías de amplitud térmica y los errores de estimación.</p>
+<p>El próximo gráfico muestra la relación entre la ATT y los errores de estimación.</p>
 <p><img src="BB1.png" width="50%" height ="auto" ></p>
 
-<p>Hay una clara tendencia a que los errores de estimación negativos más importantes se produzcan cuando las anomalías de 
-amplitud térmica son elevadas (pero no se puede decir lo inverso). No se presentó ningún caso en el que un error de estimación 
-negativo importante haya coincidido con amplitudes térmicas muy por debajo de lo normal. Asimismo, tampoco se observan 
-errores de estimación positivos importantes que hayan tenido lugar bajo amplitudes térmicas muy por encima de lo normal, 
-más bien la gran mayoría se han producido en concordancia con anomalías negativas significativas.</p>
+<p>Hay una clara tendencia a que los errores de estimación negativos más importantes se produzcan cuando las ATT son 
+  elevadas. No se presentó ningún caso en el que un error de estimación negativo importante haya coincidido con amplitudes 
+  térmicas muy por debajo de lo normal. Asimismo, tampoco se observan errores de estimación positivos importantes 
+  que hayan tenido lugar bajo amplitudes térmicas muy por encima de lo normal, más bien la gran mayoría se han producido 
+  en concordancia con anomalías negativas significativas.</p>
 
 <p><b><h2>PREGUNTA 3: ¿Es posible mejorar las peores estimaciones sin estropear las buenas?</h2></b></p>
 <p>En la "vida real", los factores de corrección son utilizados cuando no podemos obtener la TMM pero si la TMMsin6z. En 
   consecuencia, sin TMM, no es posible conocer de manera exacta el error de estimación. Sin embargo, en base a lo anteriormente 
-  expuesto, está claro que existe una relación lineal inversa entre la anomalía de la amplitud térmica diaria promedio y el 
-  error de estimación de la TMM. Específicamente, el coeficiente de correlación de Pearson fue de -0.74, con una cantidad de 
-  pares de datos igual a n = 752. Entonces, resulta interesante utilizar esta relación para mejorar las estimaciones. Para ello, 
-  se realizó una rotación del diagrama de dispersión, de tal manera que la nueva recta de regresión lineal, con los datos 
+  expuesto, está claro que existe una relación lineal inversa entre la ATT y el error de estimación de la TMM. El coeficiente 
+  de correlación de Pearson fue de -0.74 para una cantidad de pares de datos igual a n = 752. Entonces, resulta interesante 
+  utilizar esta relación para mejorar las estimaciones. Para ello, se realizó una rotación del diagrama de dispersión, 
+  de tal manera que la nueva recta de regresión lineal, con los datos 
   "rotados", quede paralela al eje de abscisas. Para esto, se determinó el ángulo &alpha; entre la recta de regresión lineal 
   y el eje de abscisas, y se definieron las dos nuevas variables: la anomalía de la amplitud térmica rotada y el error de 
   estimación rotado. Para calcularlas, se multiplicó la matriz formada por los n pares de datos (n x 2) y la matriz de rotación 
