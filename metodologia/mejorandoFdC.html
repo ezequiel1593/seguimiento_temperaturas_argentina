@@ -39,9 +39,14 @@ más bien la gran mayoría se han producido en concordancia con anomalías negat
 
 <p><b><h2>PREGUNTA 3: ¿Es posible mejorar las peores estimaciones sin estropear las buenas?</h2></b></p>
 <p>En la "vida real", los factores de corrección son utilizados cuando no podemos obtener la TMM pero si la TMMsin6z. En 
-  consecuencia, no es posible conocer de manera exacta el error de estimación. Sin embargo, en base a lo anteriormente 
-  expuesto, se sabe que si la anomalía de la amplitud térmica diaria promedio para un determinado mes fue muy elevada (en 
-  niveles récords o próximos a ellos), es más probable incurrir en una sobreestimación de la temperatura media mensual. También 
-  se sabe que si en cambio la anomalía fue muy baja, es más probable incurrir en una subestimación. Queda definir bajo 
-  qué criterios es conveniente aplicarle una "corrección" a los mismos factores de corrección, a fin de mejorar las peores 
-  estimaciones, pero minimizando la posibilidad de empeorar estimaciones buenas. </p>
+  consecuencia, sin TMM, no es posible conocer de manera exacta el error de estimación. Sin embargo, en base a lo anteriormente 
+  expuesto, está claro que existe una relación lineal inversa entre la anomalía de la amplitud térmica diaria promedio y el 
+  error de estimación de la TMM. Específicamente, el coeficiente de correlación de Pearson fue de -0.74, con una cantidad de 
+  pares de datos igual a n = 752. Entonces, resulta interesante utilizar esta relación para mejorar las estimaciones. Para ello, 
+  se realizó una rotación del diagrama de dispersión, de tal manera que la nueva recta de regresión lineal, con los datos 
+  "rotados", quede paralela al eje de abscisas. Para esto, se determinó el ángulo &alpha; entre la recta de regresión lineal 
+  y el eje de abscisas, y se definieron las dos nuevas variables: la anomalía de la amplitud térmica rotada y el error de 
+  estimación rotado. Para calcularlas, se multiplicó la matriz formada por los n pares de datos (n x 2) y la matriz de rotación 
+  (2 x 2), cuya primera fila está conformada por los elementos cos(&alpha;) y -sin(&alpha;), y su segunda fila por los 
+  elementos sin(&alpha;) y cos(&alpha;). De esta manera, se obtuvo la matriz de tamaño n x 2, con los datos rotados.</p>
+<p>El siguiente gráfico muestra la transformación de los datos tras la rotación.</p>
