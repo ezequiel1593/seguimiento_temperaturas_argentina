@@ -44,25 +44,32 @@ como también el promedio de los valores absolutos de estos errores (PVAE).</p>
   en concordancia con anomalías negativas significativas.</p>
 
 <p><b><h2>PREGUNTA 3: ¿Es posible mejorar las peores estimaciones sin estropear las buenas?</h2></b></p>
-<p>En la "vida real", los factores de corrección son utilizados cuando no podemos obtener la TMM pero si la TMMsin6z. En 
-  consecuencia, sin TMM, no es posible conocer de manera exacta el error de estimación. Sin embargo, en base a lo anteriormente 
-  expuesto, está claro que existe una relación lineal inversa entre la ATT y el error de estimación de la TMM. El coeficiente 
-  de correlación de Pearson fue de -0.74 para una cantidad de pares de datos igual a n = 752. Entonces, resulta interesante 
-  utilizar esta relación para mejorar las estimaciones. Para ello, se realizó una rotación del diagrama de dispersión, 
-  de tal manera que la nueva recta de regresión lineal, con los datos 
-  "rotados", quede paralela al eje de abscisas. Para esto, se determinó el ángulo &alpha; entre la recta de regresión lineal 
-  y el eje de abscisas, y se definieron las dos nuevas variables: la anomalía de la amplitud térmica rotada y el error de 
-  estimación rotado. Para calcularlas, se multiplicó la matriz formada por los n pares de datos (n x 2) y la matriz de rotación 
-  (2 x 2), cuya primera fila está conformada por los elementos cos(&alpha;) y -sin(&alpha;), y su segunda fila por los 
-  elementos sin(&alpha;) y cos(&alpha;). De esta manera, se obtuvo la matriz de tamaño n x 2, con los datos rotados.</p>
-<p>El siguiente gráfico muestra la transformación de los datos tras la rotación.</p>
+<p>Se halló que el coeficiente de correlación de Pearson entre la ATT y los errores de estimación es de -0.74, para una 
+  cantidad de pares de datos igual a n = 752. Entonces, resulta interesante utilizar esta relación para mejorar las 
+  estimaciones. Para ello, se realizó una rotación del diagrama de dispersión, de tal manera que la nueva recta de 
+  regresión lineal, con los datos "rotados", quede paralela al eje de abscisas. Para esto, se determinó el ángulo &alpha; 
+  entre la recta de regresión lineal y el eje de abscisas, y se definieron las dos nuevas variables: la anomalía de la amplitud 
+  térmica rotada, ATT_rot, y el error de estimación rotado, EE_rot. Para calcularlas, se multiplicó la matriz formada por los 
+  n pares de datos (n x 2) y la matriz de rotación (2 x 2), cuya primera fila está conformada por los elementos cos(&alpha;) 
+  y -sin(&alpha;), y su segunda fila por los elementos sin(&alpha;) y cos(&alpha;). De esta manera, se obtuvo una matriz de 
+  tamaño n x 2, con los datos rotados.</p>
+
+<p>El siguiente gráfico muestra la transformación:</p>
 <p><img src="BB2.png" width="50%" height ="auto" ></p>
 
-<p>¿Cómo cambiaron los valores de los errores de estimación tras la rotación? El siguiente gráfico muestra la diferencia entre 
-  el valor posterior y el previo, según la anomalía de amplitud de amplitud térmica original (no la rotada). </p>
+<p> Al hacer la rotación se eliminó la correlación entre las variables. La diferencia D entre el valor del error de 
+  estimación rotado y el error de estimación orignal da cuenta de la influencia de la ATT en el error de estimación. El 
+  siguiente gráfico evidencia la relación lineal entre D y la ATT original.</p>
 <p><img src="BB3.png" width="50%" height ="auto" ></p>
-<p>Es decir, se pudo encontrar una relación lineal entre la anomalía de amplitud térmica y la corrección adicional que debe 
-  efectuarse para mejorar las estimaciones. Las correcciones resultan ser mayores en módulo cuanto mayor es la anomalía, por lo 
-  que es posible mejorar las peores estimaciones sin estropear (de manera no significativa) las buenas. La siguiente tabla 
-  despliega los nuevos valores de PVAE, como así también los nuevos mínimos y máximos en los errores de estimación, al emplear 
-  las correcciones adicionales (después de usar los factores de corrección). </p>
+
+<p>Es decir, se pudo encontrar una relación lineal entre la ATT y la "influencia" que ésta tiene en los errores de estimación. 
+  Al eliminar esta "influencia" mejorarían las peores estimaciones sin que ello implique estropear las buenas, ya que 
+  la influencia es mayor en los percentiles bajos y altos de la ATT, pero es mínima o prácticamente nula en los datos centrales, 
+  donde las estimaciones resultaron ser mejores.</p>
+
+<p>Finalmente, para mejorar las estimaciones, lo que se hizo fue sumarle a la TMM_est el valor D que le corresponda, según 
+  la ATT observada y la recta de regresión lineal entre D y ATT. Los nuevos errores de estimación son presentados en el 
+  próximo gráfico y tabla:</p>
+<p><img src="BB4.png" width="50%" height ="auto" ></p>
+
+<p><b><h2>PREGUNTA 4: ¿Se observa lo mismo en otras estaciones meteorológicas?</h2></b></p>
