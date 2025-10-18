@@ -20,7 +20,17 @@
   <caption>Tabla 1.</caption>
   <tr><th>Mes</th><th>EE_min</th><th>EE_max</th><th>PVAE</th> </tr>
   <tr><td>1</td><td>-0.2</td><td>0.5</td><td>0.15</td></tr>
-  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td>2</td><td>-0.3</td><td>0.3</td><td>0.10</td></tr>
+  <tr><td>3</td><td>-0.3</td><td>0.4</td><td>0.13</td></tr>
+  <tr><td>4</td><td>-0.5</td><td>0.3</td><td>0.12</td></tr>
+  <tr><td>5</td><td>-0.5</td><td>0.2</td><td>0.13</td></tr>
+  <tr><td>6</td><td>-0.3</td><td>0.4</td><td>0.12</td></tr>
+  <tr><td>7</td><td>-0.4</td><td>0.3</td><td>0.12</td></tr>
+  <tr><td>8</td><td>-0.4</td><td>0.4</td><td>0.11</td></tr>
+  <tr><td>9</td><td>-0.4</td><td>0.4</td><td>0.14</td></tr>
+  <tr><td>10</td><td>-0.4</td><td>0.5</td><td>0.16</td></tr>
+  <tr><td>11</td><td>-0.6</td><td>0.4</td><td>0.13</td></tr>
+  <tr><td>12</td><td>-0.3</td><td>0.6</td><td>0.19</td></tr>
 </table>
 
 <p>En general, las estimaciones son muy buenas, los PVAE rondan entre 0.1°C y 0.2°C (teniendo en mente la incertidumbre 
@@ -62,15 +72,21 @@
   térmica rotada, ATT_rot, y el error de estimación rotado, EE_rot. Para calcularlas, se multiplicó la matriz formada por los 
   n pares de datos (n x 2) y la matriz de rotación (2 x 2), cuya primera fila está conformada por los elementos cos(&alpha;) 
   y -sin(&alpha;), y su segunda fila por los elementos sin(&alpha;) y cos(&alpha;). De esta manera, se obtuvo una matriz de 
-  tamaño n x 2, con los datos rotados.</p>
+  tamaño n x 2, con los datos rotados. La Figura 2 muestra la transformación.</p>
 
-<p>El siguiente gráfico muestra la transformación:</p>
-<p><img src="BB2.png" width="50%" height ="auto" ></p>
+<figure>
+  <img src="BB2.png" width="50%" height ="auto" >
+  <figcaption>Figura 2.</figcaption>
+</figure>
 
 <p> Al hacer la rotación se eliminó la correlación entre las variables. La diferencia D entre el valor del error de 
-  estimación rotado y el error de estimación orignal da cuenta de la influencia de la ATT en el error de estimación. El 
-  siguiente gráfico evidencia la relación lineal entre D y la ATT original.</p>
-<p><img src="BB3.png" width="50%" height ="auto" ></p>
+  estimación rotado y el error de estimación orignal da cuenta de la influencia de la ATT en el error de estimación. La 
+  Figura 3 evidencia la relación lineal entre D y la ATT original.</p>
+
+<figure>
+  <img src="BB3.png" width="50%" height ="auto" >
+  <figcaption>Figura 3.</figcaption>
+</figure>
 
 <p>Es decir, se pudo encontrar una relación lineal entre la ATT y la "influencia" que ésta tiene en los errores de estimación. 
   Al eliminar esta "influencia" mejorarían las peores estimaciones sin que ello implique estropear las buenas, ya que 
@@ -78,8 +94,12 @@
   donde las estimaciones resultaron ser mejores.</p>
 
 <p>Finalmente, para mejorar las estimaciones, lo que se hizo fue sumarle a la TMM_est el valor D que le corresponda, según 
-  la ATT observada y la recta de regresión lineal entre D y ATT. Los nuevos errores de estimación son presentados en el 
-  próximo gráfico y tabla:</p>
-<p><img src="BB4.png" width="50%" height ="auto" ></p>
+  la ATT observada y la recta de regresión lineal entre D y ATT. Los nuevos errores de estimación son presentados en la 
+  Figura 4 y Tabla 2.</p>
+
+<figure>
+  <img src="BB4.png" width="50%" height ="auto" >
+  <figcaption>Figura 4.</figcaption>
+</figure>
 
 <p><b><h2>PREGUNTA 4: ¿Se observa lo mismo en otras estaciones meteorológicas?</h2></b></p>
