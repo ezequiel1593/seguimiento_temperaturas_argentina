@@ -6,7 +6,7 @@
   y la TMM, que es la temperatura media mensual utilizando todas las horas principales. En ambos casos, en ninguna hora 
   principal el porcentaje de datos faltantes debe superar el 10%. <br>
   Adicionalmente, se calculó la TMM_est, que es la temperatura media mensual estimada, que consiste en sumarle el factor 
-  de corrección que corresponda (según el mes) a la TMMsin6z. Finalmente, se determinaron los errores de estimación, haciendo 
+  de corrección (FdC) que corresponda (según el mes) a la TMMsin6z. Finalmente, se determinaron los errores de estimación, haciendo 
   la diferencia TMM - TMM_est. Cuando el error es negativo, se dice que sobreestimó la temperatura media mensual (TMM &lt; TMM_est), 
   lo que indica que el factor de corrección "se quedó corto", es decir que tendría que haber sido más bajo (recordar que todos 
   los factores de corrección son negativos). Por otra parte, cuando el error es positivo, la temperatura media mensual 
@@ -101,5 +101,25 @@
   <img src="BB4.png" width="50%" height ="auto" >
   <figcaption>Figura 4.</figcaption>
 </figure>
+
+<table border = "1">
+  <caption>Tabla 2.</caption>
+  <tr><th>Mes</th><th>EE_min</th><th>EE_max</th><th>PVAE</th> </tr>
+  <tr><td>1</td><td>-0.2</td><td>0.4</td><td>0.12</td></tr>
+  <tr><td>2</td><td>-0.2</td><td>0.3</td><td>0.08</td></tr>
+  <tr><td>3</td><td>-0.1</td><td>0.3</td><td>0.09</td></tr>
+  <tr><td>4</td><td>-0.2</td><td>0.2</td><td>0.09</td></tr>
+  <tr><td>5</td><td>-0.2</td><td>0.3</td><td>0.09</td></tr>
+  <tr><td>6</td><td>-0.2</td><td>0.2</td><td>0.08</td></tr>
+  <tr><td>7</td><td>-0.3</td><td>0.2</td><td>0.10</td></tr>
+  <tr><td>8</td><td>-0.2</td><td>0.2</td><td>0.07</td></tr>
+  <tr><td>9</td><td>-0.2</td><td>0.3</td><td>0.08</td></tr>
+  <tr><td>10</td><td>-0.2</td><td>0.4</td><td>0.08</td></tr>
+  <tr><td>11</td><td>-0.4</td><td>0.3</td><td>0.09</td></tr>
+  <tr><td>12</td><td>-0.2</td><td>0.3</td><td>0.14</td></tr>
+</table>
+
+<p>Entonces, TMM_est = TMMsin6z + FdC + D. El principal contribuidor en acercar TMM_est a la TMM real es FdC, mientras que D 
+  intenta dar el apuntalamiento final.</p>
 
 <p><b><h2>PREGUNTA 4: ¿Se observa lo mismo en otras estaciones meteorológicas?</h2></b></p>
