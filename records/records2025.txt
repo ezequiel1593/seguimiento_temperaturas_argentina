@@ -160,3 +160,6 @@ Base Carlini   	Mínima más alta	13	 2.0
 Base San Martín	Mínima más alta	11	 3.5
 El Bolsón Aero 	Máxima más alta	25	25.9
 Orán Aero      	Máxima más alta	20	42.3
+
+OCTUBRE 2025
+Ushuaia Aero	Máxima más alta	28	19.8
