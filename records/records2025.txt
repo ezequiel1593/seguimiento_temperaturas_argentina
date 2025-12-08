@@ -163,3 +163,8 @@ Orán Aero      	Máxima más alta	20	42.3
 
 OCTUBRE 2025
 SIN RECORDS
+
+NOVIEMBRE 2025
+Chapelco Aero	Mínima más alta	26	13.5
+Chepes       	Mínima más alta	28	27.4
+Neuquén Aero 	Mínima más alta	26	23.2
