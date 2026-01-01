@@ -168,3 +168,10 @@ NOVIEMBRE 2025
 Chapelco Aero	Mínima más alta	26	13.5
 Chepes       	Mínima más alta	28	27.4
 Neuquén Aero 	Mínima más alta	26	23.2
+
+DICIEMBRE 2025
+Benito Juárez Aero       	Máxima más alta	30	38.8
+Bernardo de Irigoyen Aero	Máxima más alta	 7	35.0
+Olavarría Aero           	Mínima más alta	31	22.1
+Olavarría Aero           	Máxima más alta	31	38.5
+Pehuajó Aero             	Mínima más alta	31	24.8
