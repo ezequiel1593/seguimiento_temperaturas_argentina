@@ -1,14 +1,12 @@
 <head> <link rel="stylesheet" href="style.css"> </head>
 <!-- MENSUAL -->
 <p><b>Cálculo de la temperatura media mensual.</b><br>
-La temperatura media mensual (TMM) es el resultado de promediar todos los datos de temperatura observados durante el mes en las horas 6, 12, 18 y 0 UTC, que en el huso 
-  horario actualmente adoptado en Argentina equivale a las horas 3, 9, 15 y 21 HOA (Hora Oficial Argentina). A estas cuatro horas las llamaremos <i>horas principales</i>. <br>
-Un hecho que dificulta el cálculo de la TMM es que, en ocasiones, no siempre está disponible el dato de las 3 HOA a lo largo de toda la serie. Es decir, en algunas series 
-  existen períodos en los que no se realizó la observación de las 3 HOA. En esos casos, para estimar la TMM, se recurre a la elaboración de factores de corrección 
-  mensuales. En términos generales, un factor de corrección (FdC) consiste en la diferencia promedio entre la TMM calculada con y sin la observación de las 3 HOA. Así, 
-  cada vez que la falta de observaciones a las 3 HOA impida el cálculo de una TMM, se promedian las horas principales restantes, y a este promedio se le suma el FdC que 
-  corresponda. <br>
-El algoritmo usado para calcular las TMM fue el siguiente:
+La temperatura media mensual (TMM) es el promedio de las temperaturas observadas durante el mes en las horas 6, 12, 18 y 0 UTC, que en el huso horario actualmente adoptado en 
+  Argentina equivale a las horas 3, 9, 15 y 21 HOA (Hora Oficial Argentina). Se las conoce como <i>horas principales</i>. <br>
+Un hecho que dificulta el cálculo de la TMM es que, en ocasiones, no hay observaciones nocturnas, por lo que no siempre se dispone del dato de las 3 HOA. En esos casos, 
+  para estimar la TMM, se aplican factores de corrección mensuales. En términos generales, un factor de corrección (FdC) consiste en la diferencia promedio entre la TMM calculada 
+  con y sin la observación de las 3 HOA, que luego es aplicada en los casos que así lo requieren. <br>
+El algoritmo usado para calcular las TMM es el siguiente:
   <ol>
   <li>Seleccionar los datos horarios correspondientes a las horas principales.</li>
   <li>Agrupar los datos por mes y año.</li>
@@ -23,7 +21,7 @@ El algoritmo usado para calcular las TMM fue el siguiente:
 <!-- ESTACIONAL Y ANUAL -->
 <p><b>Cálculo de la temperatura media estacional y la temperatura media anual.</b><br>
 En el hemisferio sur, el verano meteorológico comprende los meses de diciembre, enero y febrero (DEF), el otoño meteorológico los meses de marzo, abril y mayo (MAM), el invierno 
-meteorológico los meses de junio, julio y agosto (JJA), y la primavera meteorológico los meses de septiembre, octubre y noviembre (SON). Para determinar la temperatura media de
+meteorológico los meses de junio, julio y agosto (JJA), y la primavera meteorológica los meses de septiembre, octubre y noviembre (SON). Para determinar la temperatura media de
   cada una de estas estaciones (TME), se promedian las TMM que la conforman. Se ha decidido que la TME del verano sea asignada al año correspondiente a enero. Así, por 
   ejemplo, la TME del verano 2022 es el resultado de promediar las TMM de diciembre del 2021, enero del 2022 y febrero del 2022.<br>
 Por otra parte, la temperatura media anual (TMA) es el promedio de las 12 TMM que comprenden el año. Es requisito tanto para la TME como para la TMA que no falte el dato 
@@ -42,7 +40,9 @@ Cada mes cuenta con un factor de corrección. El algoritmo para determinarlo es 
   <li>Para cada mes, seleccionar las últimas 300 diferencias, o la cantidad máxima disponible.</li>
   <li>Para cada mes, realizar el promedio de las diferencias consideradas en el punto anterior. Este promedio es el factor de corrección.</li>
 </ol>
-<p>La siguiente tabla muestra los factores de corrección mensuales de cada estación, junto a la cantidad de diferencias diarias usadas (n).</p>
+
+<details>
+  <summary> Factores de corrección mensuales de cada estación, junto a la cantidad de diferencias diarias usadas (n). </summary>
 <style>
 table, th, td {
   border:1px solid black;
@@ -1933,7 +1933,11 @@ table, th, td {
   </tr>
 </tbody>
 </table>
-</p>
+</details>
+
+<p><b>Corrección adicional por amplitud térmica.</b><br>
+  <p>Se halló que </p>
+
 
 <!-- CASOS ESPECIALES -->
 <p><b>Casos especiales.</b><br>
