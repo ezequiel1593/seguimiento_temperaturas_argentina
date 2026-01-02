@@ -1936,7 +1936,26 @@ table, th, td {
 </details>
 
 <p><b>Corrección adicional por amplitud térmica.</b><br>
-  <p>Se halló que </p>
+  <p>Se halló que las estimaciones de la TMM, tras aplicar los factores de corrección, no eran buenas si la anomalía de la amplitud térmica era muy positiva o muy negativa.
+  La relación entre el error de estimación y la anomalía de la amplitud térmica es lineal: se observaron sobreestimaciones de la TMM cuanto más positivas eran las anomalías 
+  (el factor de corrección "se quedaba corto", es decir una TMM estimada superior a la TMM real), a la vez que se advirtieron subestimaciones de la TMM cuanto más negativas 
+  eran las anomalías (el factor de corrección "pasaba de largo", es decir una TMM estimada inferior a la TMM real). En algunos casos, estos errores de estimación eran mayores a 
+  0.5°C en valor absoluto. Por lo tanto, se consideró conveniente determinar, para cada estación, la relación lineal entre el error de estimación y la anomalía de la amplitud 
+  térmica, para luego aplicar una corrección adicional.</p>
+El algoritmo usado para calcular la corrección adicional es el siguiente:
+  <ol>
+  <li>A partir de la serie diaria de temperaturas mínimas y máximas, calcular la amplitud térmica (Tmax - Tmin) para cada dia.</li>
+  <li>Calcular la media mensual de la amplitud térmica, para cada mes y año de la serie, siempre que la cantidad de datos faltantes (amplitudes diarias) sea inferior al 15%.
+  De lo contrario, la media mensual de la amplitud térmica será NA.</li>
+  <li>A partir de las medias mensuales del punto <b>2</b>, calcular la amplitud térmica normal 1991-2020 para cada mes del año, siempre que se cuente con al menos 25 datos. 
+  De lo contrario, <b>no hay corrección adicional</b>.</li>
+  <li>Calcular las anomalías de la amplitud térmica (valor observado - valor normal).</li>
+  <li>Calcular los errores de estimación para cada mes y año de la serie, que es la diferencia entre la TMM y la TMM estimada, de acuerdo al algoritmo usado para calcular la 
+  TMM, descripto al principio de la página.</li>
+  <li>Determinar la regresión lineal entre el error de estimación y la anomalía de amplitud térmica. La pendiente y ordenada al origen de esta regresión serán utilizadas 
+  como corrección adicional, haciendo ((anomalia amplitud térmica * pendiente) + ordenada al origen).</li>
+</ol>
+</p>
 
 
 <!-- CASOS ESPECIALES -->
