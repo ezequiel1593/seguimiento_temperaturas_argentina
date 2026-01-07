@@ -1,4 +1,4 @@
-DIAS DONDE SE HA IGUALADO O SUPERADO UN RECORD DE TEMPERATURA MÍNIMA O MÁXIMA
+DIAS DONDE SE HA IGUALADO O SUPERADO UN RECORD MENSUAL DE TEMPERATURA MÍNIMA O MÁXIMA
 EXISTEN 4 COLUMNAS
 ESTACIÓN: Nombre de la estación meteorológica, debe contar con al menos 20 años de datos
 TIPO: Especifica si se trata de la temperatura diaria mínima/máxima, valor más bajo/más alto
