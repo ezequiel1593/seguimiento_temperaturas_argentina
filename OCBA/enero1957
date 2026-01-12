@@ -1,0 +1,207 @@
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-e6ms{background-color:#ffcc67;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-1eri{background-color:#ffcc67;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-xozw{background-color:#ffcc67;font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-e6ms" colspan="5">Marcha de temperatura, 29/01/1957</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-1eri">Hora</td>
+    <td class="tg-xozw">El Palomar</td>
+    <td class="tg-xozw">Ezeiza</td>
+    <td class="tg-xozw">OCBA</td>
+    <td class="tg-xozw">San Miguel</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">1</td>
+    <td class="tg-baqh">26.0</td>
+    <td class="tg-baqh">29.5</td>
+    <td class="tg-baqh">29.4</td>
+    <td class="tg-baqh">26.2</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">2</td>
+    <td class="tg-baqh">25.7</td>
+    <td class="tg-baqh">28.7</td>
+    <td class="tg-baqh">28.0</td>
+    <td class="tg-baqh">25.3</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">3</td>
+    <td class="tg-baqh">25.0</td>
+    <td class="tg-baqh">28.1</td>
+    <td class="tg-baqh">28.2</td>
+    <td class="tg-baqh">25.0</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">4</td>
+    <td class="tg-baqh">24.8</td>
+    <td class="tg-baqh">27.7</td>
+    <td class="tg-baqh">27.1</td>
+    <td class="tg-baqh">24.9</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">5</td>
+    <td class="tg-baqh">24.1</td>
+    <td class="tg-baqh">27.1</td>
+    <td class="tg-baqh">27.8</td>
+    <td class="tg-baqh">24.3</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">6</td>
+    <td class="tg-baqh">24.5</td>
+    <td class="tg-baqh">26.7</td>
+    <td class="tg-baqh">27.0</td>
+    <td class="tg-baqh">24.2</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">7</td>
+    <td class="tg-baqh">24.8</td>
+    <td class="tg-baqh">27.1</td>
+    <td class="tg-baqh">27.2</td>
+    <td class="tg-baqh">27.2</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">8</td>
+    <td class="tg-baqh">27.4</td>
+    <td class="tg-baqh">29.0</td>
+    <td class="tg-baqh">30.0</td>
+    <td class="tg-baqh">32.2</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">9</td>
+    <td class="tg-baqh">31.8</td>
+    <td class="tg-baqh">32.7</td>
+    <td class="tg-baqh">33.6</td>
+    <td class="tg-baqh">35.6</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">10</td>
+    <td class="tg-baqh">36.6</td>
+    <td class="tg-baqh">36.3</td>
+    <td class="tg-baqh">36.4</td>
+    <td class="tg-baqh">36.6</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">11</td>
+    <td class="tg-baqh">38.4</td>
+    <td class="tg-baqh">38.3</td>
+    <td class="tg-baqh">38.5</td>
+    <td class="tg-baqh">38.3</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">12</td>
+    <td class="tg-baqh">39.7</td>
+    <td class="tg-baqh">39.1</td>
+    <td class="tg-baqh">38.3</td>
+    <td class="tg-baqh">39.1</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">13</td>
+    <td class="tg-baqh">39.8</td>
+    <td class="tg-baqh">40.3</td>
+    <td class="tg-baqh">39.1</td>
+    <td class="tg-baqh">39.2</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">14</td>
+    <td class="tg-baqh">40.3</td>
+    <td class="tg-baqh">43.6</td>
+    <td class="tg-baqh">39.3</td>
+    <td class="tg-baqh">40.7</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">15</td>
+    <td class="tg-baqh">40.4</td>
+    <td class="tg-baqh">44.1</td>
+    <td class="tg-baqh">41.7</td>
+    <td class="tg-baqh">41.0</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">16</td>
+    <td class="tg-baqh">40.8</td>
+    <td class="tg-baqh">44.2</td>
+    <td class="tg-baqh">42.0</td>
+    <td class="tg-baqh">41.4</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">17</td>
+    <td class="tg-baqh">41.0</td>
+    <td class="tg-baqh">44.0</td>
+    <td class="tg-baqh">37.9</td>
+    <td class="tg-baqh">40.1</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">18</td>
+    <td class="tg-baqh">41.2</td>
+    <td class="tg-baqh">39.4</td>
+    <td class="tg-baqh">37.3</td>
+    <td class="tg-baqh">39.3</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">19</td>
+    <td class="tg-baqh">38.0</td>
+    <td class="tg-baqh">37.4</td>
+    <td class="tg-baqh">36.1</td>
+    <td class="tg-baqh">34.1</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">20</td>
+    <td class="tg-baqh">33.8</td>
+    <td class="tg-baqh">30.6</td>
+    <td class="tg-baqh">34.0</td>
+    <td class="tg-baqh">28.7</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">21</td>
+    <td class="tg-baqh">28.6</td>
+    <td class="tg-baqh">28.3</td>
+    <td class="tg-baqh">29.4</td>
+    <td class="tg-baqh">25.9</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">22</td>
+    <td class="tg-baqh">26.4</td>
+    <td class="tg-baqh">25.7</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">24.0</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">23</td>
+    <td class="tg-baqh">24.4</td>
+    <td class="tg-baqh">23.7</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">22.2</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">0</td>
+    <td class="tg-baqh">22.3</td>
+    <td class="tg-baqh">22.3</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">21.3</td>
+  </tr>
+  <tr>
+    <td class="tg-1eri">Tmin</td>
+    <td class="tg-xozw">24.0°C</td>
+    <td class="tg-xozw">26.5°C</td>
+    <td class="tg-xozw">26.6°C</td>
+    <td class="tg-xozw">24.4°C</td>
+  </tr>
+  <tr>
+    <td class="tg-1eri">Tmax</td>
+    <td class="tg-xozw">41.9°C</td>
+    <td class="tg-xozw">44.3°C</td>
+    <td class="tg-xozw">43.3°C</td>
+    <td class="tg-xozw">41.5°C</td>
+  </tr>
+</tbody></table>
