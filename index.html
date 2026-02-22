@@ -1,64 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Seguimiento Temperaturas Argentina</title>
+</head>
+<body style="background-color: #ffe5b0; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; margin: 0; padding: 40px 20px; color: #333; display: flex; flex-direction: column; align-items: center;">
 
-<body style="background-color: #ffe5b0; font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px;">
+    <div style="background-color: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 700px; width: 100%;">
+        
+        <div style="text-align: center;">
+            <p style="margin: 0; font-size: 1.2rem;">
+                <b>Bienvenidos a <i>seguimiento_temperaturas_argentina</i></b>
+            </p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
+            
+            <div style="margin: 20px 0;">
+                <img src="mapas/202601.png" width="50%" style="border-radius: 8px; border: 1px solid #eee; display: block; margin: 0 auto; transition: 0.3s;" title="Click para ver mapas anteriores">
+            </div>
+            
+            <p style="margin: 15px 0;">
+                <a href="mapas/mapas.html" style="color: #d35400; text-decoration: none; font-weight: bold; font-size: 0.9rem; border: 1px solid #d35400; padding: 8px 16px; border-radius: 20px;">
+                    Ver mapas anteriores
+                </a>
+            </p>
+        </div>
 
-  <div style="background-color: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; max-width: 500px;">
-    
-    <p style="margin: 0; font-size: 1.1rem;">
-      <b>Bienvenidos a <i>seguimiento_temperaturas_argentina</i></b>
-    </p>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
 
-    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+        <section style="margin-bottom: 30px;">
+            <p style="color: #2c3e50; border-left: 4px solid #d35400; padding-left: 10px; margin-bottom: 15px;">
+                <b>Temperaturas medias mensuales, estacionales y anuales.</b>
+            </p>
+            <ul style="line-height: 1.8;">
+                <li><a href="medias/temperaturas_medias.html" style="color: #2980b9; text-decoration: none;">Tablas</a></li>
+                <li><a href="metodologia/metodologia.html" style="color: #2980b9; text-decoration: none;">Metodología</a></li>
+                <li><a href="metadata/imagenes_estaciones.html" style="color: #2980b9; text-decoration: none;">Imágenes de las estaciones meteorológicas.</a></li>
+            </ul>
+        </section>
 
-    <div style="margin: 20px 0;">
-      <img src="mapas/202601.png" width="60%" style="border-radius: 8px; display: block; margin: 0 auto;">
+        <section style="margin-bottom: 30px; background-color: #fcfcfc; padding: 20px; border-radius: 10px; border: 1px solid #f0f0f0;">
+            <p style="margin-top: 0;"><b>Datos diarios de temperatura mínima y máxima.</b></p>
+            <p style="font-size: 0.95rem; line-height: 1.6;">
+                Datos diarios de temperatura mínima y temperatura máxima pueden ser consultados en este 
+                <a href="https://registrodetemperaturasenargentina.blogspot.com/" style="color: #d35400; font-weight: bold;">blog</a>. 
+                Incluye información de estaciones desactivadas y de otras redes. Las tablas son actualizadas una vez por año, en enero.
+            </p>
+            <ul style="line-height: 1.8; margin-bottom: 0;">
+                <li><a href="historicos/extremosanualesnacionales.html" style="color: #2980b9; text-decoration: none;">Extremos a nivel nacional por año (excluyendo bases antárticas).</a></li>
+                <li><a href="records/records2025.txt" style="color: #2980b9; text-decoration: none;">Récords mensuales caídos o igualados durante el transcurso del año 2025.</a></li>
+            </ul>
+        </section>
+
+        <section style="margin-bottom: 30px;">
+            <p style="font-size: 0.95rem; line-height: 1.6;">
+                Anomalía de la temperatura mínima media y máxima media mensual al norte de los 40°S desde el año 1971, siguiendo la metodología descripta en este 
+                <a href="https://registrodetemperaturasenargentina.blogspot.com/p/atmm40sv2.html" style="color: #2980b9; text-decoration: underline;">posteo</a>.
+            </p>
+            <ul style="line-height: 1.8;">
+                <li><a href="anomalias_norte_40S/tabla_minimas.html" style="color: #2980b9; text-decoration: none;">Anomalía temperatura mínima.</a></li>
+                <li><a href="anomalias_norte_40S/tabla_maximas.html" style="color: #2980b9; text-decoration: none;">Anomalía temperatura máxima.</a></li>
+            </ul>
+        </section>
+
+        <div style="background-color: #fff4e0; border: 1px dashed #d35400; padding: 15px; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 40px;">
+            <span style="font-size: 1.5rem;">☕</span>
+            <p style="margin: 0; font-size: 0.9rem;"><b>Apoye este proyecto con un cafecito:</b></p>
+            <a href="https://cafecito.app/argen_weather" target="_blank" style="background-color: #d35400; color: white; padding: 6px 12px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.8rem;">
+                INVITAR UN CAFECITO
+            </a>
+        </div>
     </div>
 
-    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-
-    <p style="margin: 0;">
-      <a href="mapas/mapas.html" style="color: #d35400; text-decoration: none; font-weight: bold;">
-        Ver mapas anteriores
-      </a>
+    <p style="font-size: 0.8rem; color: #8d7d5d; margin-top: 20px;">
+        © 2026 Registro de Temperaturas en Argentina
     </p>
 
-  </div>
-
-<p><b>Temperaturas medias mensuales, estacionales y anuales.</b></p>
-  <ul>
-    <li><a href="medias/temperaturas_medias.html">Tablas</a><br></li>
-    <!-- <li><a href="graficos/medias_moviles/medias_moviles.html">Medias móviles</a><br></li> -->
-    <!-- <li><a href="graficos/graficos.html">Series temporales (se actualizarán una vez por año, en enero)</a><br></li> -->
-    <li><a href="metodologia/metodologia.html">Metodología</a><br></li>
-  </ul>
-<a href="metadata/imagenes_estaciones.html">Imágenes de las estaciones meteorológicas.</a><br>
-  
-<p>--------------------------------------------------------------------</p>
-  
-<p><b>Datos diarios de temperatura mínima y máxima.</b></p>
-<p>Datos diarios de temperatura mínima y temperatura máxima pueden ser consultados en este 
-  <a href="https://registrodetemperaturasenargentina.blogspot.com/">blog</a>. Incluye información de estaciones desactivadas y de otras redes. 
-  Las tablas son actualizadas una vez por año, en enero.</p>
-
-  <ul>
-    <li><a href="historicos/extremosanualesnacionales.html">Extremos a nivel nacional por año (excluyendo bases antárticas).</a><br></li>
-    <li><a href="records/records2025.txt">Récords mensuales caídos o igualados durante el transcurso del año 2025.</a><br></li>
-  </ul>
-  
-<p>Anomalía de la temperatura mínima media y máxima media mensual al norte de los 40°S desde el año 1971, siguiendo la metodología descripta 
-  en este <a href="https://registrodetemperaturasenargentina.blogspot.com/p/atmm40sv2.html">posteo</a>.</p>
-<ul>
-    <li><a href="anomalias_norte_40S/tabla_minimas.html">Anomalía temperatura mínima.</a><br></li>
-    <li><a href="anomalias_norte_40S/tabla_maximas.html">Anomalía temperatura máxima.</a><br></li>
-  </ul>
-
-<p>--------------------------------------------------------------------</p>
-<div style="border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 10px 0; margin: 20px 0; display: flex; align-items: center; justify-content: center; gap: 10px;">
-  <span>☕</span>
-  <p style="margin: 0;"><b>Apoye este proyecto con un cafecito:</b></p>
-  <a href="https://cafecito.app/argen_weather" target="_blank" style="color: #d35400; font-weight: bold; text-decoration: underline;">INVITAR UN CAFECITO</a>
-</div>
 </body>
 </html>
 
