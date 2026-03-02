@@ -175,3 +175,13 @@ Bernardo de Irigoyen Aero	Máxima más alta	 7	35.0
 Olavarría Aero           	Mínima más alta	31	22.1
 Olavarría Aero           	Máxima más alta	31	38.5
 Pehuajó Aero             	Mínima más alta	31	24.8
+
+ENERO 2026
+Bariloche Aero   	Mínima más alta	30	17.3
+El Bolsón Aero   	Máxima más alta	 5	38.4
+El Calafate Aero 	Máxima más alta	29	30.4
+Rio Gallegos Aero	Máxima más alta	29	36.4
+
+FEBRERO 2026
+Base Carlini	Máxima más baja	10	-3.6
+Base Carlini	Máxima más baja	11	-2.4
