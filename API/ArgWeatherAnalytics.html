@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArgWeather Analytics - API Access</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --light: #f4f7f6;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+        }
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--accent);
+        }
+        .card h3 { margin-top: 0; }
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            color: var(--accent);
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #2980b9; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
 
+<header>
+    <h1>Argentina Weather Analytics</h1>
+    <p>API para obtener el último reporte horario de estaciones meteorológicas oficiales.</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2>Selecciona tu plan de acceso</h2>
+        <p>Elige la cantidad de consultas mensuales que necesites. La entrega del token es manual y se realiza vía email tras confirmar el pago.</p>
+
+      <section>
+        <h2>¿Qué datos puedo obtener?</h2>
+        <p>La API <b>ArgWeatherAnalytics</b> permite acceder al último reporte horario meteorológico de estaciones oficiales de Argentina. El resultado es un JSON con los siguientes datos:</p>
+        <table border="1"> 
+          <thead><tr><th>Parámetro</th></tr></thead>
+          <tbody>
+            <tr><td>Estación (lugar)</td></tr>
+            <tr><td>Fecha y hora</td></tr>
+            <tr><td>Temperatura del aire</td></tr>
+            <tr><td>Sensación térmica</td></tr>
+            <tr><td>Humedad relativa</td></tr>
+            <tr><td>Presión atmosférica</td></tr>
+            <tr><td>Cobertura nubosa</td></tr>
+            <tr><td>Velocidad y dirección del viento</td></tr>
+            <tr><td>Visibilidad horizontal</td></tr>
+            <tr><td>Estado del tiempo presente</td></tr>
+          </tbody>
+        </table>
+    </section>
+
+      <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+        
+        <div class="pricing-grid">
+            <div class="card">
+                <h3>Plan Demo</h3>
+                <div class="price">5 Consultas</div>
+                <p>Ideal para testear la estructura de los datos.</p>
+                <a href="TU_LINK_MERCADOPAGO_5" class="btn">Comprar Acceso</a>
+            </div>
+
+            <div class="card">
+                <h3>Plan Estándar</h3>
+                <div class="price">1000 Consultas</div>
+                <p>Perfecto para proyectos de investigación locales.</p>
+                <a href="TU_LINK_MERCADOPAGO_1000" class="btn">Comprar Acceso</a>
+            </div>
+
+            <div class="card">
+                <h3>Plan Premium</h3>
+                <div class="price">5000 Consultas</div>
+                <p>Para análisis de datos a gran escala y series históricas.</p>
+                <a href="TU_LINK_MERCADOPAGO_5000" class="btn">Comprar Acceso</a>
+            </div>
+        </div>
+    </section>
+
+    <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+    
+</div>
+
+
+</body>
+</html>
