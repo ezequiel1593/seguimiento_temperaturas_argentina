@@ -97,6 +97,7 @@
           <h2>¿Cómo funciona?</h2>
           <p>Al comprar accesos, se te enviará por mail un <code>token</code> personal, el cual deberás utilizar cada vez que desees realizar un pedido. Además del token, vas a necesitar el código <code>wmo_id</code> de la estación. El listado completo lo podés encontrar en <a href="https://datosmeteorologicosdeargentina.blogspot.com/2026/03/api.html">esta página</a>.</p>
           <p><strong>Endpoint</strong>: <code>/ArgWeatherAnalytics</code></p>
+          <p><strong>Método</strong>: <code>GET</code></p>
           <p><strong>Parámetros</strong>: <code>wmo_id</code>; <code>token</code></p>
             <p>Ejemplo para obtener el último reporte de Ezeiza (87576):<br>
             <code>/ArgWeatherAnalytics?wmo_id=87576&token=TU_TOKEN</code></p>
@@ -106,7 +107,7 @@
           <p>No vas a tener datos de modelos ni estimaciones, sino datos reales y oficiales.</p>
 
           <h2>Limitaciones</h2>
-          <p>Algo a tener en cuenta es que no todas las estaciones realizan observaciones horarias durante todo el día. Algunas, sólo lo hacen durante horas diurnas. Como el proyecto es nuevo, limitamos la consultas a una por segundo para todos los usuarios.</p>
+          <p>Algo a tener en cuenta es que no todas las estaciones realizan observaciones horarias durante todo el día. Algunas, sólo lo hacen durante horas diurnas. Como el proyecto es nuevo, limitamos las consultas a una por segundo para todos los usuarios.</p>
             
             
     </section>
@@ -132,13 +133,18 @@
 
             <div class="card">
                 <h3>Plan Premium</h3>
-                <div class="price">5000 Consultas</div>
+                <div class="price">250000 Consultas</div>
                 <p>Próximamente.</p>
             </div>
         </div>
     </section>
 
     <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+    <section>
+        <h2>Aclaraciones</h2>
+        <p>Esta no es una API oficial. No tenemos ninguna relación con ninguna entidad pública.</p>
+    </section>
 
     
 </div>
