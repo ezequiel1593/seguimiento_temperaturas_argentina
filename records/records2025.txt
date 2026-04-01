@@ -16,6 +16,9 @@ FEBRERO 2026
 Base Carlini	Máxima más baja	10	-3.6
 Base Carlini	Máxima más baja	11	-2.4
 
+MARZO 2026
+Chapelco Aero	Máxima más baja	22	9.5
+
 ##------ 2025
 
 ENERO 2025
