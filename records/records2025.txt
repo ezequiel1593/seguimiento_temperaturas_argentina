@@ -1,11 +1,15 @@
-DIAS DONDE SE HA IGUALADO O SUPERADO UN RECORD MENSUAL DE TEMPERATURA MÍNIMA O MÁXIMA
-EXISTEN 4 COLUMNAS
+** DIAS DONDE SE HA IGUALADO O SUPERADO UN RECORD MENSUAL DE TEMPERATURA MÍNIMA O MÁXIMA **
+
+Existen cuatro columnas
 ESTACIÓN: Nombre de la estación meteorológica, debe contar con al menos 20 años de datos
 TIPO: Especifica si se trata de la temperatura diaria mínima/máxima, valor más bajo/más alto
 DIA: Día de ocurrencia
 VALOR ALCANZADO: Cual fue el valor de temperatura alcanzado, en °C
 
-##------ 2026
+# ==============================================================================
+# AÑO 2026
+# ==============================================================================
+
 ENERO 2026
 Bariloche Aero   	Mínima más alta	30	17.3
 El Bolsón Aero   	Máxima más alta	 5	38.4
@@ -19,7 +23,31 @@ Base Carlini	Máxima más baja	11	-2.4
 MARZO 2026
 Chapelco Aero	Máxima más baja	22	9.5
 
-##------ 2025
+ABRIL 2026
+Base Carlini                     	Mínima más alta	16	 4.0
+Benito Juárez Aero               	Mínima más alta	 1	19.8
+Buenos Aires Observatorio Central	Mínima más alta	 1	24.1
+Chilecito Aero                   	Mínima más alta	 1	23.4
+Chilecito Aero                   	Mínima más alta	 2	22.2
+Coronel Suarez Aero              	Mínima más alta	 1	20.1
+El Palomar Aero                  	Mínima más alta	 1	22.0
+El Palomar Aero                  	Mínima más alta	 2	22.0
+Iguazú Aero                      	Máxima más alta	 5	35.5
+Ituzaingó                        	Máxima más alta	 4	36.0
+Jáchal                           	Mínima más alta	 1	21.9
+Pigüé Aero                       	Mínima más alta	 1	19.8
+Punta Indio B.A.                 	Mínima más alta	 1	22.0
+Rio Cuarto Aero                  	Mínima más alta	 1	21.3
+San Fernando Aero                	Mínima más alta	 2	22.6
+San Juan Aero                    	Mínima más alta	 1	22.0
+Santa Rosa del Conlara Aero      	Máxima más alta	 1	33.6
+Sauce Viejo Aero                 	Mínima más alta	 1	24.7
+Tinogasta                        	Mínima más alta	 1	23.0
+Villa Gesell Aero                	Mínima más alta	 1	21.0
+
+# ==============================================================================
+# AÑO 2025
+# ==============================================================================
 
 ENERO 2025
 Maquinchao  	Máxima más alta	30	39.0
