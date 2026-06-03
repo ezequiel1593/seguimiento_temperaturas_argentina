@@ -45,6 +45,10 @@ Sauce Viejo Aero                 	Mínima más alta	 1	24.7
 Tinogasta                        	Mínima más alta	 1	23.0
 Villa Gesell Aero                	Mínima más alta	 1	21.0
 
+MAYO 2026
+Venado Tuerto Aero	Mínima más alta	 6	19.6
+Villa Gesell Aero 	Máxima más baja	27	 7.6
+
 # ==============================================================================
 # AÑO 2025
 # ==============================================================================
