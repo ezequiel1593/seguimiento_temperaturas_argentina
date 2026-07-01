@@ -49,6 +49,18 @@ MAYO 2026
 Venado Tuerto Aero	Mínima más alta	 6	19.6
 Villa Gesell Aero 	Máxima más baja	27	 7.6
 
+JUNIO 2026
+Base Carlini   	Mínima más alta	8	 1.6
+Base Esperanza 	Mínima más alta	3	 3.1
+Base Esperanza 	Mínima más alta	5	 6.0
+Base Esperanza 	Máxima más alta	5	15.4
+Base Esperanza 	Máxima más alta	6	13.4
+Base Marambio  	Mínima más alta	5	 1.3
+Base Marambio  	Máxima más alta	5	11.8
+Base Marambio  	Máxima más alta	6	11.3
+Base San Martín	Máxima más alta	5	 8.0
+Base San Martín	Máxima más alta	6	 9.4
+
 # ==============================================================================
 # AÑO 2025
 # ==============================================================================
