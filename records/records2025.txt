@@ -1,10 +1,12 @@
 ** DIAS DONDE SE HA IGUALADO O SUPERADO UN RECORD MENSUAL DE TEMPERATURA MÍNIMA O MÁXIMA **
 
-Existen cuatro columnas
-ESTACIÓN: Nombre de la estación meteorológica, debe contar con al menos 20 años de datos
-TIPO: Especifica si se trata de la temperatura diaria mínima/máxima, valor más bajo/más alto
-DIA: Día de ocurrencia
-VALOR ALCANZADO: Cual fue el valor de temperatura alcanzado, en °C
+Para un mes y año en particular, se enlistan aquellos días en donde, para una estación en particular:
+> La temperatura mínima (máxima) es igual o inferior al récord mensual de mínima (máxima) más baja
+> La temperatura mínima (máxima) es igual o superior al récord mensual de mínima (máxima) más alta
+
+Sólo se consideran las estaciones meteorológicas con al menos 20 años de datos.
+Para los récords se tienen en cuanta los datos hasta el año precedente.
+Todas las temperaturas están expresadas en °C.
 
 # ==============================================================================
 # AÑO 2026
@@ -60,6 +62,42 @@ Base Marambio  	Máxima más alta	5	11.8
 Base Marambio  	Máxima más alta	6	11.3
 Base San Martín	Máxima más alta	5	 8.0
 Base San Martín	Máxima más alta	6	 9.4
+
+JULIO 2026
+Bernardo de Irigoyen Aero	Máxima más alta	28	 27.8
+Bolivar Aero             	Máxima más baja	 6	  3.9
+Chilecito Aero           	Mínima más alta	17	 22.9
+Corrientes Aero          	Mínima más alta	17	 25.0
+Corrientes Aero          	Mínima más alta	18	 25.5
+El Calafate Aero         	Mínima más baja	22	-17.6
+Formosa Aero             	Mínima más alta	17	 26.0
+Formosa Aero             	Mínima más alta	18	 26.6
+Formosa Aero             	Máxima más alta	17	 34.1
+Ituzaingó                	Mínima más alta	18	 24.0
+Jujuy UN                 	Mínima más alta	17	 18.1
+Jujuy UN                 	Mínima más alta	18	 17.7
+Las Lomitas              	Mínima más alta	17	 26.8
+Las Lomitas              	Mínima más alta	18	 25.8
+Mercedes Aero            	Mínima más alta	17	 20.5
+Mercedes Aero            	Mínima más alta	18	 23.0
+Metán                    	Máxima más alta	17	 35.8
+Monte Caseros Aero       	Mínima más alta	17	 23.1
+Monte Caseros Aero       	Mínima más alta	18	 21.7
+Oberá                    	Mínima más alta	18	 23.0
+Oberá                    	Mínima más alta	20	 22.6
+Paso de los Libres Aero  	Mínima más alta	17	 24.3
+Paso de los Libres Aero  	Mínima más alta	18	 24.5
+Paso de los Libres Aero  	Máxima más alta	17	 31.6
+Posadas Aero             	Mínima más alta	18	 25.0
+Resistencia Aero         	Mínima más alta	17	 24.6
+Resistencia Aero         	Mínima más alta	18	 25.1
+Rivadavia                	Máxima más alta	17	 38.5
+Rivadavia                	Máxima más alta	31	 38.5
+Salta Aero               	Mínima más alta	17	 19.1
+Salta Aero               	Mínima más alta	18	 26.0
+Tartagal Aero            	Máxima más alta	18	 38.2
+Tinogasta                	Mínima más alta	17	 22.5
+Villa Gesell Aero        	Máxima más baja	 2	  5.6
 
 # ==============================================================================
 # AÑO 2025
