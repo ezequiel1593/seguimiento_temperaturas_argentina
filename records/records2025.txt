@@ -1,6 +1,6 @@
 ** DIAS DONDE SE HA IGUALADO O SUPERADO UN RECORD MENSUAL DE TEMPERATURA MÍNIMA O MÁXIMA **
 
-Para un mes y año en particular, se enlistan aquellos días en donde, para una estación en particular:
+Para cada mes y año, se enlistan aquellos días en donde, para una estación en particular:
 > La temperatura mínima (máxima) es igual o inferior al récord mensual de mínima (máxima) más baja
 > La temperatura mínima (máxima) es igual o superior al récord mensual de mínima (máxima) más alta
 
