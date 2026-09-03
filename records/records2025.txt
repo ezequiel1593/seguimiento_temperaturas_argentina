@@ -99,6 +99,10 @@ Tartagal Aero            	Máxima más alta	18	 38.2
 Tinogasta                	Mínima más alta	17	 22.5
 Villa Gesell Aero        	Máxima más baja	 2	  5.6
 
+AGOSTO 2026
+Base Belgrano II	Máxima más baja	25	-35.2
+Rivadavia       	Máxima más alta	 6	 42.0
+
 # ==============================================================================
 # AÑO 2025
 # ==============================================================================
