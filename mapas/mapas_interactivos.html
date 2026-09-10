@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapas de Temperatura Media</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #2b2b2b;
+      margin: 24px;
+      background-color: #fcfcfc;
+    }
+
+    h1 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #1a2530;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #0056b3;
+      padding-bottom: 6px;
+      display: inline-block;
+    }
+
+    .table-container {
+      overflow-x: auto; /* Permite scroll horizontal si la pantalla es muy chica */
+    }
+
+    table {
+      width: 100%;
+      max-width: 1100px;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background-color: #ffffff;
+      border: 1px solid #dcdcdc;
+    }
+
+    th {
+      background-color: #f1f4f8;
+      color: #334155;
+      font-weight: 600;
+      text-align: center;
+      padding: 10px 8px;
+      border: 1px solid #cbd5e1;
+    }
+
+    td {
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+    }
+
+    td.year {
+      font-weight: 600;
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+
+    tr:hover td {
+      background-color: #f1f5f9;
+    }
+
+    /* Enlace estilo botón compacto */
+    .btn-link {
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    .btn-link:hover {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mapas de temperatura media</h1>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Año</th>
+          <th>Ene</th>
+          <th>Feb</th>
+          <th>Mar</th>
+          <th>Abr</th>
+          <th>May</th>
+          <th>Jun</th>
+          <th>Jul</th>
+          <th>Ago</th>
+          <th>Sep</th>
+          <th>Oct</th>
+          <th>Nov</th>
+          <th>Dic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="year">2026</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><a href="mapa_202608.html" class="btn-link">Ver</a></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <div class="table-footer">
+      Información no oficial, en base a datos horarios de las 3, 9, 15 y 21 HOA de las siguientes redes: SMN, RHN, RMET, REM, SiNaRaMe, IANIGLA, DPA.
+    </div>
+  </div>
+
+</body>
+</html>
