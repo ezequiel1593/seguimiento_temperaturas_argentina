@@ -1,1430 +1,313 @@
-<h2><b>Temperaturas m&iacute;nimas y m&aacute;ximas diarias hist&oacute;ricas en la Rep&uacute;blica Argentina.</b></h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Datos Diarios</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --primary-hover: #0b5ed7;
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-color: #212529;
+      --border-color: #dee2e6;
+      --table-stripe: #f1f5f9;
+      --table-hover: #e2e8f0;
+    }
 
-<style>
-  .tm { border: 1px solid #aaa; width: 740px; }
-  .tm th, .tm td { text-align: center; border: 1px solid #ccc; padding: 0px 0px; }
-  a { color: black; text-decoration: none; }
-  h4 { background-color: burlywood; }
-</style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
 
-<table class="tm">
-  <thead>
-    <tr>
-      <th>Jurisdicci&oacute;n</th>
-      <th>Estaci&oacute;n meteorol&oacute;gica</th>
-      <th>Origen</th>
-      <th>Datos desde</th>
-      <th>Datos hasta</th>  
-      <th>Metadata</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Buenos Aires</td>
-      <td><a href="Azul.html">Azul</a></td>
-      <td>SMN</td>
-      <td>1929</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Bahía Blanca Aero.html">Bahía Blanca</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td>
-      <td><a href = "#bahia_blanca">Ver</a></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Balcarce INTA.html">Balcarce</a></td>
-      <td>INTA</td>
-      <td>1961</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Barrow INTA.html">Barrow</a></td>
-      <td>INTA</td>
-      <td>1960</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Benito Juárez Aero.html">Benito Juárez</a></td>
-      <td>SMN</td>
-      <td>1980</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Bolivar Aero.html">Bolivar</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Castelar INTA.html">Castelar</a></td>
-      <td>INTA</td>
-      <td>1951</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Coronel Suarez Aero.html">Coronel Suarez</a></td>
-      <td>SMN</td>
-      <td>1936</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Dolores Aero.html">Dolores</a></td>
-      <td>SMN</td>
-      <td>1929</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Don Torcuato Aero.html">Don Torcuato</a></td>
-      <td>SMN</td>
-      <td>1963</td>
-      <td>2006</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="El Palomar Aero.html">El Palomar</a></td>
-      <td>SMN</td>
-      <td>1935</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Ezeiza Aero.html">Ezeiza</a></td>
-      <td>SMN</td>
-      <td>1946</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="General Villegas INTA.html">General Villegas</a></td>
-      <td>INTA</td>
-      <td>1973</td>
-      <td>2015</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Hilario Ascasubi INTA.html">Hilario Ascasubi</a></td>
-      <td>INTA</td>
-      <td>1966</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Isla Martín García.html">Isla Mart&iacute;n Garc&iacute;a</a></td>
-      <td></td>
-      <td>1957</td>
-      <td>1992</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Junin Aero.html">Junin</a></td>
-      <td>SMN</td>
-      <td>1958</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="La Plata Aero.html">La Plata</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Las Flores.html">Las Flores</a></td>
-      <td>SMN</td>
-      <td>1987</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Mar del Plata Aero.html">Mar del Plata</a></td>
-      <td>SMN</td>
-      <td>1950</td>
-      <td>presente</td> 
-      <td><a href = "#mar_del_plata">Ver</a></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Morón Aero.html">Morón</a></td>
-      <td>SMN</td>
-      <td>1957</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Nueve de Julio.html">Nueve de Julio</a></td>
-      <td>SMN</td>
-      <td>1931</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Olavarría Aero.html">Olavarría</a></td>
-      <td>SMN</td>
-      <td>1987</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Pehuajó Aero.html">Pehuajó</a></td>
-      <td>SMN</td>
-      <td>1958</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Pergamino INTA.html">Pergamino</a></td>
-      <td>INTA</td>
-      <td>1931</td>
-      <td>2022</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Pigüé Aero.html">Pigü&eacute;</a></td>
-      <td>SMN</td>
-      <td>1935</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Punta Indio B.A..html">Punta Indio B.A.</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Fernando Aero.html">San Fernando</a></td>
-      <td>SMN</td>
-      <td>1995</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Miguel.html">San Miguel</a></td>
-      <td></td>
-      <td>1933</td>
-      <td>2017</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Pedro INTA.html">San Pedro</a></td>
-      <td>INTA</td>
-      <td>1967</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Tandil Aero.html">Tandil</a></td>
-      <td>SMN</td>
-      <td>1960</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Trenque Lauquen.html">Trenque Lauquen</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Tres Arroyos.html">Tres Arroyos</a></td>
-      <td>SMN</td>
-      <td>1964</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Villa Gesell Aero.html">Villa Gesell</a></td>
-      <td>SMN</td>
-      <td>1976</td>
-      <td>presente</td> 
-    </tr>
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
 
+    h2 {
+      margin-top: 0;
+      margin-bottom: 24px;
+      font-size: 1.6rem;
+      color: #1e293b;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 10px;
+    }
 
-    <tr>
-      <td>Ciudad Autónoma de Buenos Aires</td>
-      <td><a href="Aeroparque.html">Aeroparque</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Buenos Aires Observatorio Central.html">Buenos Aires Obs. Central</a></td>
-      <td>SMN</td>
-      <td>1906</td>
-      <td>presente</td> 
-    </tr>
+    .controls-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: flex-end;
+      margin-bottom: 25px;
+      background-color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
 
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-    <tr>
-      <td>Catamarca</td>
-      <td><a href="Catamarca Aero.html">Catamarca</a></td>
-      <td>SMN</td>
-      <td>1973</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Catamarca Aero I.html">Catamarca (Aero I)</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1973</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Tinogasta.html">Tinogasta</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
+    .input-group label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #475569;
+    }
 
+    select, input[type="number"] {
+      padding: 8px 12px;
+      font-size: 0.95rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      background-color: #fff;
+    }
 
-    <tr>
-      <td>Chaco</td>
-      <td><a href="Las Breñas INTA.html">Las Breñas</a></td>
-      <td>INTA</td>
-      <td>1967</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Pcia Roque Saenz Peña Aero.html">Pcia Roque Saenz Peña</a></td>
-      <td>SMN</td>
-      <td>1931</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Resistencia Aero.html">Resistencia</a></td>
-      <td>SMN</td>
-      <td>1964</td>
-      <td>presente</td> 
-    </tr>
+    select:focus, input[type="number"]:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+    }
 
+    button {
+      padding: 9px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: var(--primary-color);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    button:hover {
+      background-color: var(--primary-hover);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    thead tr {
+      background-color: #1e293b;
+      color: #ffffff;
+    }
+
+    th, td {
+      padding: 12px 16px;
+    }
+
+    th {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.15s ease;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: var(--table-stripe);
+    }
+
+    tbody tr:hover {
+      background-color: var(--table-hover);
+    }
+
+    .text-center {
+      text-align: center;
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .text-error {
+      text-align: center;
+      color: #dc2626;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Consulta de Datos Diarios</h2>
     
-    
-    <tr>
-      <td>Chubut</td>
-      <td><a href="Comodoro Rivadavia Aero.html">Comodoro Rivadavia</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Esquel Aero.html">Esquel</a></td>
-      <td>SMN</td>
-      <td>1961</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Paso de Indios.html">Paso de Indios</a></td>
-      <td>SMN</td>
-      <td>1968</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Puerto Madryn Aero.html">Puerto Madryn</a></td>
-      <td>SMN</td>
-      <td>1992</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Trelew Aero.html">Trelew</a></td>
-      <td>SMN</td>
-      <td>1929</td>
-      <td>presente</td> 
-    </tr>
+    <div class="controls-panel">
+      <div class="input-group">
+        <label for="estacionSelect">Estación</label>
+        <!-- Select dinámico -->
+        <select id="estacionSelect">
+          <option value="">Cargando estaciones...</option>
+        </select>
+      </div>
 
+      <div class="input-group">
+        <label for="anioInput">Año</label>
+        <input type="number" id="anioInput" placeholder="Ej: 1997" min="1870" max="2030" style="width: 100px;">
+      </div>
 
-    <tr>
-      <td>C&oacute;rdoba</td>
-      <td><a href="Córdoba Aero.html">Córdoba Aero</a></td>
-      <td>SMN</td>
-      <td>1947</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Córdoba Observatorio.html">Córdoba Observatorio</a></td>
-      <td>SMN</td>
-      <td>1873</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Laboulaye Aero.html">Laboulaye</a></td>
-      <td>SMN</td>
-      <td>1939</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Marcos Juárez Aero.html">Marcos Juárez</a></td>
-      <td>SMN</td>
-      <td>1954</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Pilar Observatorio.html">Pilar</a></td>
-      <td>SMN</td>
-      <td>1925</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Rio Cuarto Aero.html">Rio Cuarto</a></td>
-      <td>SMN</td>
-      <td>1931</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Villa de María del Río Seco.html">Villa de María del Río Seco</a></td>
-      <td>SMN</td>
-      <td>1931</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Villa Dolores Aero.html">Villa Dolores</a></td>
-      <td>SMN</td>
-      <td>1930</td>
-      <td>presente</td> 
-    </tr>
+      <button id="btnConsultar" onclick="cargarBaseDatos()">Consultar</button>
+    </div>
 
+    <div class="table-wrapper">
+      <table id="tablaResultados">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Tmin (°C)</th>
+            <th>Tmax (°C)</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+          <tr>
+            <td colspan="3" class="text-center">Selecciona los filtros para realizar la consulta.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    <tr>
-      <td>Corrientes</td>
-      <td><a href="Bella Vista INTA.html">Bella Vista</a></td>
-      <td>INTA</td>
-      <td>1959</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Corrientes Aero.html">Corrientes</a></td>
-      <td>SMN</td>
-      <td>1961</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Curuzú Cuatiá.html">Curuzú Cuatiá</a></td>
-      <td>SMN</td>
-      <td>1973</td>
-      <td>2008</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="General Paz.html">General Paz</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1995</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Ituzaingó.html">Ituzaingó</a></td>
-      <td>SMN</td>
-      <td>1983</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Mercedes Aero.html">Mercedes</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Mercedes INTA.html">Mercedes (INTA)</a></td>
-      <td>INTA</td>
-      <td>1968</td>
-      <td>1990</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Monte Caseros Aero.html">Monte Caseros</a></td>
-      <td>SMN</td>
-      <td>1931</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Paso de los Libres Aero.html">Paso de los Libres</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
+  <script>
+    let dbSQL = null;
 
+    // Cargar sql.js y la lista de estaciones al iniciar
+    document.addEventListener("DOMContentLoaded", () => {
+      cargarEstaciones();
 
-    <tr>
-      <td>Entre Rios</td>
-      <td><a href="Concordia Aero.html">Concordia</a></td>
-      <td>SMN</td>
-      <td>1962</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Gualeguaychú Aero.html">Gualeguaychú</a></td>
-      <td>SMN</td>
-      <td>1931</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Mazaruca.html">Mazaruca</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1982</td> 
-    </tr>
-    </tr>
-        <tr>
-      <td></td>
-      <td><a href="Paraná Aero.html">Paraná</a></td>
-      <td>SMN</td>
-      <td>1931</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Salto Grande.html">Salto Grande</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1993</td> 
-    </tr>
-    </tr>
-        <tr>
-      <td></td>
-      <td><a href="Villaguay Aero.html">Villaguay</a></td>
-      <td>SMN</td>
-      <td>1959</td>
-      <td>2007</td> 
-    </tr>
+      window.initSqlJs({
+        locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+      }).then(function(sql) {
+        dbSQL = sql;
+        console.log("Motor SQL.js preparado.");
+      });
+    });
 
+    // Función para obtener estaciones.json y llenar el selector
+    async function cargarEstaciones() {
+      const select = document.getElementById("estacionSelect");
+      try {
+        const response = await fetch("estaciones.json");
+        if (!response.ok) throw new Error("No se pudo cargar la lista de estaciones.");
+        
+        const estaciones = await response.json();
+        
+        select.innerHTML = '<option value="">-- Selecciona una estación --</option>';
+        estaciones.forEach(est => {
+          const option = document.createElement("option");
+          option.value = est;
+          option.textContent = est;
+          select.appendChild(option);
+        });
+      } catch (err) {
+        console.error("Error al cargar lista de estaciones:", err);
+        select.innerHTML = '<option value="">Error al cargar estaciones</option>';
+      }
+    }
 
-    <tr>
-      <td>Formosa</td>
-      <td><a href="Formosa Aero.html">Formosa</a></td>
-      <td>SMN</td>
-      <td>1962</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Las Lomitas.html">Las Lomitas</a></td>
-      <td>SMN</td>
-      <td>1937</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Francisco de Laishí.html">San Francisco de Laishí</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1976</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Tacaaglé.html">Tacaaglé</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1971</td> 
-    </tr>
+    function formatearFecha(fechaIso) {
+      if (!fechaIso || fechaIso === "NA" || fechaIso === "null") return "s/d";
+      const partes = String(fechaIso).split("-");
+      if (partes.length === 3) {
+        return `${partes[2]}/${partes[1]}/${partes[0]}`;
+      }
+      return fechaIso;
+    }
 
+    async function cargarBaseDatos() {
+      const select = document.getElementById("estacionSelect");
+      const anioInput = document.getElementById("anioInput").value.trim();
+      const nombreEstacion = select.value;
+      const cuerpo = document.getElementById("cuerpoTabla");
 
-    <tr>
-      <td>Jujuy</td>
-      <td><a href="Humahuaca.html">Humahuaca</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1976</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Jujuy Aero.html">Jujuy</a></td>
-      <td>SMN</td>
-      <td>1967</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Jujuy UN.html">Jujuy UN</a></td>
-      <td>SMN</td>
-      <td>1987</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="La Quiaca Observatorio.html">La Quiaca</a></td>
-      <td>SMN</td>
-      <td>1916</td>
-      <td>presente</td> 
-    </tr>
+      if (!nombreEstacion) {
+        alert("Selecciona una estación.");
+        return;
+      }
 
+      if (!dbSQL) {
+        alert("Cargando motor SQL, reintenta en un momento...");
+        return;
+      }
 
+      cuerpo.innerHTML = "<tr><td colspan='3' class='text-center'>Cargando datos...</td></tr>";
 
-    <tr>
-      <td>La Pampa</td>
-      <td><a href="Anguil INTA.html">Anguil</a></td>
-      <td>INTA</td>
-      <td>1961</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="General Acha.html">General Acha</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1997</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="General Pico Aero.html">General Pico</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Guatraché.html">Guatraché</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1972</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Macachín.html">Macachín</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1976</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Puelches.html">Puelches</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1976</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Quemú-Quemú.html">Quemú-Quemú</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1975</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Santa Rosa Aero.html">Santa Rosa</a></td>
-      <td>SMN</td>
-      <td>1937</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Victorica.html">Victorica</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
+      try {
+        const url = `${nombreEstacion}.sqlite`;
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+          throw new Error(`No se encontró el archivo: ${url}`);
+        }
 
+        const buffer = await response.arrayBuffer();
+        const db = new dbSQL.Database(new Uint8Array(buffer));
 
-    <tr>
-      <td>La Rioja</td>
-      <td><a href="Chamical Aero.html">Chamical</a></td>
-      <td>SMN</td>
-      <td>1962</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Chepes.html">Chepes</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Chilecito Aero.html">Chilecito</a></td>
-      <td>SMN</td>
-      <td>1985</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="La Rioja Aero.html">La Rioja</a></td>
-      <td>SMN</td>
-      <td>1940</td>
-      <td>presente</td> 
-    </tr>
+        let query = "SELECT Fecha, Tmin, Tmax FROM diarios";
+        
+        if (anioInput !== "") {
+          query += ` WHERE strftime('%Y', Fecha) = '${anioInput}'`;
+        }
 
+        query += " ORDER BY Fecha ASC";
 
-    <tr>
-      <td>Mendoza</td>
-      <td><a href="Chacras de Coria.html">Chacras de Coria</a></td>
-      <td>SMN</td>
-      <td>1959</td>
-      <td>2019</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Colonia Alvear.html">Colonia Alvear</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1985</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Cristo Redentor.html">Cristo Redentor</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1984</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="La Consulta INTA.html">La Consulta</a></td>
-      <td>INTA</td>
-      <td>1970</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Malargüe.html">Malargüe</a></td>
-      <td>SMN</td>
-      <td>1929</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Mendoza Aero.html">Mendoza Aero</a></td>
-      <td>SMN</td>
-      <td>1959</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Mendoza Observatorio.html">Mendoza Observatorio</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Puente del Inca.html">Puente del Inca</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1976</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Carlos Mza.html">San Carlos</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>2022</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Martín Mza.html">San Martín</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Rafael Aero.html">San Rafael</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Uspallata Aero.html">Uspallata</a></td>
-      <td>SMN</td>
-      <td>1967</td>
-      <td>presente</td> 
-    </tr>
+        const res = db.exec(query);
+        cuerpo.innerHTML = "";
 
+        if (res.length > 0) {
+          const filas = res[0].values;
+          
+          filas.forEach(fila => {
+            const fechaVal = formatearFecha(fila[0]);
+            const tminVal  = (fila[1] === null || fila[1] === undefined || fila[1] === "NA") ? "s/d" : fila[1];
+            const tmaxVal  = (fila[2] === null || fila[2] === undefined || fila[2] === "NA") ? "s/d" : fila[2];
 
-    <tr>
-      <td>Misiones</td>
-      <td><a href="Bernardo de Irigoyen Aero.html">Bernardo de Irigoyen</a></td>
-      <td>SMN</td>
-      <td>1984</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Cerro Azul INTA.html">Cerro Azul</a></td>
-      <td>INTA</td>
-      <td>1968</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Iguazú Aero.html">Iguazú</a></td>
-      <td>SMN</td>
-      <td>1961</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Oberá.html">Oberá</a></td>
-      <td>SMN</td>
-      <td>1990</td>
-      <td>presente</td> 
-    <tr>
-      <td></td>
-      <td><a href="Posadas Aero.html">Posadas</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    
+            const tr = document.createElement("tr");
+            tr.innerHTML = `<td>${fechaVal}</td><td>${tminVal}</td><td>${tmaxVal}</td>`;
+            cuerpo.appendChild(tr);
+          });
+        } else {
+          cuerpo.innerHTML = "<tr><td colspan='3' class='text-center'>No se encontraron registros para ese año.</td></tr>";
+        }
 
-    <tr>
-      <td>Neuqu&eacute;n</td>
-      <td><a href="Chapelco Aero.html">Chapelco</a></td>
-      <td>SMN</td>
-      <td>1991</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Neuquén Aero.html">Neuquén</a></td>
-      <td>SMN</td>
-      <td>1957</td>
-      <td>presente</td> 
-    </tr>
-
-
-    <tr>
-      <td>Rio Negro</td>
-      <td><a href="Bariloche Aero.html">Bariloche</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Catedral 2000.html">Catedral 2000</a></td>
-      <td>SMN</td>
-      <td>1957</td>
-      <td>1989</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Cipolletti.html">Cipolletti</a></td>
-      <td>SMN</td>
-      <td>1978</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Cipolletti I.html">Cipolletti (I)</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1978</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="El Bolsón Aero.html">El Bolsón</a></td>
-      <td>SMN</td>
-      <td>1978</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="El Bolsón I.html">El Bolsón (Aero I)</a></td>
-      <td>SMN</td>
-      <td>1961</td>
-      <td>1978</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Maquinchao.html">Maquinchao</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Rio Colorado.html">Rio Colorado</a></td>
-      <td>SMN</td>
-      <td>1958</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Antonio Oeste Aero.html">San Antonio Oeste</a></td>
-      <td>SMN</td>
-      <td>1991</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Antonio Oeste I.html">San Antonio Oeste (Aero I)</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1988</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Viedma Aero.html">Viedma</a></td>
-      <td>SMN</td>
-      <td>1967</td>
-      <td>presente</td> 
-    </tr>
-
-
-    <tr>
-      <td>Salta</td>
-      <td><a href="Metán.html">Metán</a></td>
-      <td>SMN</td>
-      <td>1993</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Orán Aero.html">Orán</a></td>
-      <td>SMN</td>
-      <td>1958</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Rivadavia.html">Rivadavia</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Salta Aero.html">Salta</a></td>
-      <td>SMN</td>
-      <td>1925</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Tartagal Aero.html">Tartagal</a></td>
-      <td>SMN</td>
-      <td>1961</td>
-      <td>presente</td> 
-    </tr>
-
-
-    <tr>
-      <td>San Juan</td>
-      <td><a href="Jáchal.html">Jáchal</a></td>
-      <td>SMN</td>
-      <td>1961</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Juan Aero.html">San Juan</a></td>
-      <td>SMN</td>
-      <td>1966</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Juan Aero I.html">San Juan (Aero I)</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1966</td> 
-    </tr>
-
-
-    <tr>
-      <td>San Luis</td>
-      <td><a href="San Luis Aero.html">San Luis</a></td>
-      <td>SMN</td>
-      <td>1929</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Santa Rosa del Conlara Aero.html">Santa Rosa del Conlara</a></td>
-      <td>SMN</td>
-      <td>2002</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Villa Reynolds Aero.html">Villa Reynolds</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-
-    
-    <tr>
-      <td>Santa Cruz</td>
-      <td><a href="El Calafate Aero.html">El Calafate</a></td>
-      <td>SMN</td>
-      <td>2001</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Gobernador Gregores Aero.html">Gobernador Gregores</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Lago Argentino Aero.html">Lago Argentino</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>2000</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Perito Moreno Aero.html">Perito Moreno</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Puerto Deseado Aero.html">Puerto Deseado</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Rio Gallegos Aero.html">Rio Gallegos</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="San Julián Aero.html">San Julián</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Santa Cruz Aero.html">Santa Cruz</a></td>
-      <td>SMN</td>
-      <td>1958</td>
-      <td>presente</td> 
-    </tr>
-
-
-    <tr>
-      <td>Santa Fe</td>
-      <td><a href="Ceres Aero.html">Ceres</a></td>
-      <td>SMN</td>
-      <td>1928</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="El Trébol Aero.html">El Trébol</a></td>
-      <td>SMN</td>
-      <td>1989</td>
-      <td>2023</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Reconquista Aero.html">Reconquista</a></td>
-      <td>SMN</td>
-      <td>1948</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Rosario Aero.html">Rosario</a></td>
-      <td>SMN</td>
-      <td>1935</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Sauce Viejo Aero.html">Sauce Viejo</a></td>
-      <td>SMN</td>
-      <td>1958</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Venado Tuerto Aero.html">Venado Tuerto</a></td>
-      <td>SMN</td>
-      <td>1992</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Zavalla INTA.html">Zavalla</a></td>
-      <td>INTA</td>
-      <td>1973</td>
-      <td>2023</td> 
-    </tr>
-
-
-    <tr>
-      <td>Santiago del Estero</td>
-      <td><a href="Campo Gallo.html">Campo Gallo</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1977</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Santiago del Estero Aero.html">Santiago del Estero</a></td>
-      <td>SMN</td>
-      <td>1929</td>
-      <td>presente</td> 
-    </tr>
-
-
-    <tr>
-      <td>Tierra del Fuego, Ant&aacute;rtida e Islas del Atl&aacute;ntico Sur</td>
-      <td><a href="Base Belgrano II.html">Base Belgrano II</a></td>
-      <td>SMN</td>
-      <td>1980</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Base Carlini.html">Base Carlini</a></td>
-      <td>SMN</td>
-      <td>1985</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Base Esperanza.html">Base Esperanza</a></td>
-      <td>SMN</td>
-      <td>1961</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Base Marambio.html">Base Marambio</a></td>
-      <td>SMN</td>
-      <td>1971</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Base Orcadas.html">Base Orcadas</a></td>
-      <td>SMN</td>
-      <td>1951</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Base San Martín.html">Base San Martín</a></td>
-      <td>SMN</td>
-      <td>1976</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Tolhuin.html">Tolhuin</a></td>
-      <td>SMN</td>
-      <td>1990</td>
-      <td>2010</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Rio Grande B.A..html">Rio Grande B.A.</a></td>
-      <td>SMN</td>
-      <td>1959</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Ushuaia Aero.html">Ushuaia</a></td>
-      <td>SMN</td>
-      <td>1990</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Ushuaia Aero I.html">Ushuaia (Aero I)</a></td>
-      <td>SMN</td>
-      <td>1957</td>
-      <td>1988</td> 
-    </tr>
-
-
-    <tr>
-      <td>Tucum&aacute;n</td>
-      <td><a href="Famaillá INTA.html">Famaillá</a></td>
-      <td>INTA</td>
-      <td>1968</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Tucumán Aero.html">Tucumán</a></td>
-      <td>SMN</td>
-      <td>1981</td>
-      <td>presente</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Tucumán Aero I.html">Tucumán (Aero I)</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1981</td> 
-    </tr>
-    <tr>
-      <td></td>
-      <td><a href="Villa Nougués.html">Villa Nougués</a></td>
-      <td>SMN</td>
-      <td>1956</td>
-      <td>1971</td> 
-    </tr>
-  </tbody>
-</table>
-
-<p>En lo posible, los datos de las estaciones en funcionamiento ser&aacute;n actualizados mensualmente. El listado completo de estaciones puede cambiar.</p>
-<hr>
-
-<p><h3><u>Metadata general (SMN)</u></h3></p>
-<p>
-  La siguiente información no es oficial y se basa en investigaciones informales personales. Sujeta a modificaciones y correcciones.
-</p>
-
-<p>
-  La mayoría de las estaciones del Servicio Meteorológico Nacional (SMN) operan en aeródromos. 
-  Las excepciones son: Buenos Aires Observatorio Central, Chepes, Cipolletti, Córdoba Observatorio, Ituzaingó, Jáchal, Jujuy UN, 
-  Las Flores, Las Lomitas, La Quiaca Observatorio, Mendoza Observatorio, Maquinchao, Metán, Nueve de Julio, Oberá, Paso de Indios, 
-  Pilar Observatorio, Rio Colorado, Rivadavia, San Martín, Tinogasta, Trenque Lauquen, Tres Arroyos, Victorica y Villa de María del Rio Seco.
-  También se cuenta con observaciones meteorológicas en cada una de las seis bases antárticas.
-</p>
-
-<p>
-  Muchas de las ciudades y localidades comenzaron a tener observaciones meteorológicas desde antes del inicio de las observaciones en los
-  aeródromos, por lo general en observatorios urbanos.
-  El <i>proceso de traslado</i> de las estaciones meteorológicas desde estos observatorios hacia los aeródromos tuvo lugar principalmente entre las décadas 
-  de 1940 y 1960. Debido a esto, algunas de las series más extensas son el resultado de la unión entre la serie del observatorio urbano y 
-  la del aeródromo.
-</p>
-
-<p>
-  La siguiente tabla enlista aquellas estaciones meteorológicas cuyas series se originan de la unión descripta en el párrafo
-  anterior, ofreciendo, en forma tentativa, la fecha o año de inicio de las observaciones en los aeródromos:
-
-  <table class="tm">
-  <thead>
-    <tr>
-      <th>Estaci&oacute;n meteorol&oacute;gica</th>
-      <th>Inicio</th> 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Azul</td>
-      <td>04/10/1957</td>
-    </tr>
-    <tr>
-      <td>Ceres</td>
-      <td>17/03/1978</td>
-    </tr>
-    <tr>
-      <td>Coronel Suárez</td>
-      <td>08/12/1980</td>
-    </tr>
-    <tr>
-      <td>Dolores</td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>Gualeguaychú</td>
-      <td>01/04/1953</td>
-    </tr>
-    <tr>
-      <td>Laboulaye</td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>La Rioja</td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>Malargüe</td>
-      <td>1951</td>
-    </tr>
-    <tr>
-      <td>Monte Caseros</td>
-      <td>1946</td>
-    </tr>
-    <tr>
-      <td>Paraná</td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>Pig&uuml;&eacute;</td>
-      <td>1983</td>
-    </tr>
-    <tr>
-      <td>Presidencia Roque Saenz Peña</td>
-      <td>01/10/1998</td>
-    </tr>
-    <tr>
-      <td>Rio Cuarto</td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>Rosario</td>
-      <td>1951</td>
-    </tr>
-    <tr>
-      <td>Salta</td>
-      <td>21/10/1949</td>
-    </tr>
-    <tr>
-      <td>San Luis</td>
-      <td>Agosto 1946</td>
-    </tr>
-    <tr>
-      <td>Santiago del Estero</td>
-      <td>Diciembre 1949</td>
-    </tr>
-    <tr>
-      <td>Trelew</td>
-      <td>14/12/1944</td>
-    </tr>
-    <tr>
-      <td>Villa Dolores</td>
-      <td>?</td>
-    </tr>
-  </tbody>
-  </table>
-</p>
-
-<p>
-  Dos veces al día, a las 9 de la mañana y a las 9 de la noche (12 UTC y 00 UTC) se realiza la observación y posterior reseteo de los 
-  termómetros de temperatura mínima y temperatura máxima, los cuales indican precisamente la temperatura mínima y máxima de las últimas 
-  12 horas (a veces con un pequeño sesgo de instrumental, en tal caso se le aplica una corrección al valor observado, añadiendo o sustrayendo 
-  una constante fija que depende del instrumento). La temperatura mínima del día es la más baja de las dos temperaturas mínimas observadas, 
-  mientras que la temperatura máxima del día es la más alta de las dos temperaturas máximas observadas. Curiosamente, en ocasiones la temperatura 
-  máxima de un día ocurre a las 9 de la noche <i>del día anterior</i>.<br>
-  Esta forma de observar y registrar las temperaturas extremas diarias existe desde al menos 1956. Es posible que antes de ese año, los horarios 
-  de observación de las temperatura mínima y máxima hayan sido a las 9 y a las 19:45 h, o a las 9, 19:45 y 21 h.<br>
-  Es probable que, en las estaciones meteorológicas que no son del SMN, los extremos de temperatura diarios sean de 00 a 00 h (día civil).
-</p>
-<hr>
-
-<p><h3><u>Metadata particular</u></h3></p>
-<p>
-  La siguiente información no es oficial y se basa en investigaciones informales personales. Sujeta a modificaciones y correcciones.
-</p>
-
-<div id = "bahia_blanca">
-  <h4>Bah&iacute;a Blanca</h4>
-  <table class="tm">
-  <thead>
-    <tr>
-      <th>Estaci&oacute;n meteorol&oacute;gica</th>
-      <th>Inicio</th>
-      <th>Fin</th> 
-      <th>Comentarios adicionales</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Bahía Blanca</td>
-      <td>01/01/1860</td>
-      <td>30/09/1883</td>
-      <td>Observaciones efectuadas por el Sr. D. Felipe Caronti, concluidas por el fallecimiento del observador.</td>
-    </tr>
-    <tr>
-      <td>Bahía Blanca Aero</td>
-      <td>?</td>
-      <td>---</td>
-      <td>Hay incertidumbre sobre el comienzo de la estación "Bahía Blanca Aero", así como también del comienzo y fin de la estación 
-        anterior a la del aer&oacute;dromo (y posterior a la de Caronti).
-        <ul>
-          <li>El <i>Reseau Mondial 1912-1934</i> publica en sus resúmenes datos de la estación "Bahía Blanca" hasta junio de 1932.</li>
-          <li>El <i>Smithsonian Miscellaneous Collections Vol. 105 (WWR)</i> menciona que la mudanza al aer&oacute;dromo fue en septiembre de 1940.</li> 
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>Base Comandante Espora</td>
-      <td>01/01/1938</td>
-      <td>30/04/1970</td>
-      <td>También conocida como Harding Green.</td>
-    </tr>
-    <tr>
-      <td>Faro Recalada (Bahía Blanca)</td>
-      <td>01/01/1930</td>
-      <td>31/12/1965</td>
-      <td>Ubicada el este de la ciudad de Monte Hermoso.</td>
-    </tr>
-  </tbody>
-  </table>
-
-  <ul>
-    <li><b>N&uacute;mero indicativo internacional</b>: 87750</li>
-    <li><b>Ubicaci&oacute;n</b>: <a href = "https://maps.app.goo.gl/ADLRFNTHrCoy1YhQ8">Ver</a></li>
-  </ul>
-
-</div>
-
-<div id = "mar_del_plata">
-  <h4>Mar del Plata</h4>
-  <table class="tm">
-  <thead>
-    <tr>
-      <th>Estaci&oacute;n meteorol&oacute;gica</th>
-      <th>Inicio</th>
-      <th>Fin</th> 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Mar del Plata</td>
-      <td>01/09/1902</td>
-      <td>30/04/1958</td>
-    </tr>
-    <tr>
-      <td>Mar del Plata B.N.</td>
-      <td>01/01/1954</td>
-      <td>31/12/1984</td>
-    </tr>
-    <tr>
-      <td>Mar del Plata Aero</td>
-      <td>01/01/1946</td>
-      <td>---</td>
-    </tr>
-  </tbody>
-  </table>
-
-  <ul>
-    <li><b>N&uacute;mero indicativo internacional</b>: 87692</li>
-    <li><b>Ubicaci&oacute;n</b>: <a href = "https://maps.app.goo.gl/SsENbRc1yzc7ggvM8">Ver</a></li>
-  </ul>
-
-</div>
+      } catch (error) {
+        console.error("Error al consultar:", error);
+        cuerpo.innerHTML = `<tr><td colspan='3' class='text-error'>Error: ${error.message}</td></tr>`;
+      }
+    }
+  </script>
+</body>
+</html>
