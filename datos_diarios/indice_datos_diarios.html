@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consulta de Datos Diarios</title>
+  <title>Consulta de Datos Diarios - Vista Calendario</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
   <style>
     :root {
       --primary-color: #0d6efd;
       --primary-hover: #0b5ed7;
+      --success-color: #198754;
+      --success-hover: #157347;
       --bg-color: #f8f9fa;
       --card-bg: #ffffff;
       --text-color: #212529;
-      --border-color: #dee2e6;
-      --table-stripe: #f1f5f9;
-      --table-hover: #e2e8f0;
+      --border-color: #cbd5e1;
     }
 
     body {
@@ -22,23 +22,23 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
-      padding: 40px 20px;
+      padding: 20px;
       display: flex;
       justify-content: center;
     }
 
     .container {
       width: 100%;
-      max-width: 800px;
+      max-width: 1400px;
       background: var(--card-bg);
-      padding: 30px;
+      padding: 25px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
 
     h2 {
       margin-top: 0;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       font-size: 1.6rem;
       color: #1e293b;
       border-bottom: 2px solid var(--border-color);
@@ -50,7 +50,7 @@
       flex-wrap: wrap;
       gap: 15px;
       align-items: flex-end;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       background-color: #f8fafc;
       padding: 16px;
       border-radius: 8px;
@@ -69,23 +69,23 @@
       color: #475569;
     }
 
-    select, input[type="number"] {
+    select {
       padding: 8px 12px;
       font-size: 0.95rem;
       border: 1px solid #cbd5e1;
       border-radius: 6px;
       outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: border-color 0.2s ease;
       background-color: #fff;
     }
 
-    select:focus, input[type="number"]:focus {
+    select:focus {
       border-color: var(--primary-color);
       box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
     }
 
     button {
-      padding: 9px 20px;
+      padding: 9px 18px;
       font-size: 0.95rem;
       font-weight: 600;
       color: #ffffff;
@@ -93,71 +93,103 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.1s ease;
+      transition: background-color 0.2s ease;
     }
 
     button:hover {
       background-color: var(--primary-hover);
     }
 
-    button:active {
-      transform: scale(0.98);
+    button.btn-export {
+      background-color: var(--success-color);
+      margin-left: auto;
+    }
+
+    button.btn-export:hover {
+      background-color: var(--success-hover);
     }
 
     .table-wrapper {
       overflow-x: auto;
+      overflow-y: hidden;
       border: 1px solid var(--border-color);
       border-radius: 8px;
     }
 
     table {
       width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.95rem;
+      border-collapse: separate;
+      border-spacing: 0;
+      text-align: center;
+      font-size: 0.82rem;
     }
 
-    thead tr {
+    thead th, tfoot th, tfoot td {
+      position: sticky;
       background-color: #1e293b;
       color: #ffffff;
-    }
-
-    th, td {
-      padding: 12px 16px;
-    }
-
-    th {
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    tbody tr {
       border-bottom: 1px solid var(--border-color);
-      transition: background-color 0.15s ease;
+      border-right: 1px solid #334155;
+      padding: 6px 4px;
+      z-index: 2;
     }
 
-    tbody tr:last-child {
-      border-bottom: none;
+    thead th {
+      top: 0;
     }
 
-    tbody tr:nth-child(even) {
-      background-color: var(--table-stripe);
+    thead tr:nth-child(2) th {
+      top: 31px;
+      background-color: #334155;
+      font-size: 0.75rem;
     }
 
-    tbody tr:hover {
-      background-color: var(--table-hover);
+    tfoot tr th, tfoot tr td {
+      bottom: 0;
+      background-color: #1e293b;
+      font-weight: bold;
+      border-top: 2px solid var(--border-color);
+    }
+
+    th.col-dia, td.col-dia {
+      position: sticky;
+      left: 0;
+      background-color: #f1f5f9;
+      font-weight: bold;
+      color: #0f172a;
+      z-index: 3;
+      border-right: 2px solid var(--border-color) !important;
+      min-width: 45px;
+    }
+
+    thead tr:nth-child(1) th.col-dia {
+      z-index: 4;
+    }
+
+    td {
+      padding: 6px 3px;
+      border-bottom: 1px solid #e2e8f0;
+      border-right: 1px solid #e2e8f0;
+      min-width: 38px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mes-sep {
+      border-right: 2px solid #cbd5e1 !important;
     }
 
     .text-center {
       text-align: center;
       color: #64748b;
       font-style: italic;
+      padding: 20px;
     }
 
     .text-error {
       text-align: center;
       color: #dc2626;
       font-weight: 500;
+      padding: 20px;
     }
   </style>
 </head>
@@ -169,42 +201,69 @@
     <div class="controls-panel">
       <div class="input-group">
         <label for="estacionSelect">Estación</label>
-        <!-- Select dinámico -->
-        <select id="estacionSelect">
+        <select id="estacionSelect" onchange="alCambiarEstacion()">
           <option value="">Cargando estaciones...</option>
         </select>
       </div>
 
       <div class="input-group">
-        <label for="anioInput">Año</label>
-        <input type="number" id="anioInput" placeholder="Ej: 1997" min="1870" max="2030" style="width: 100px;">
+        <label for="anioSelect">Año</label>
+        <select id="anioSelect">
+          <option value="">-- Selecciona estación primero --</option>
+        </select>
       </div>
 
       <button id="btnConsultar" onclick="cargarBaseDatos()">Consultar</button>
+      <button id="btnExportar" class="btn-export" onclick="exportarCSV()" style="display:none;">Exportar CSV</button>
     </div>
 
     <div class="table-wrapper">
       <table id="tablaResultados">
         <thead>
           <tr>
-            <th>Fecha</th>
-            <th>Tmin (°C)</th>
-            <th>Tmax (°C)</th>
+            <th rowspan="2" class="col-dia">Día</th>
+            <th colspan="2">Ene</th>
+            <th colspan="2">Feb</th>
+            <th colspan="2">Mar</th>
+            <th colspan="2">Abr</th>
+            <th colspan="2">May</th>
+            <th colspan="2">Jun</th>
+            <th colspan="2">Jul</th>
+            <th colspan="2">Ago</th>
+            <th colspan="2">Sep</th>
+            <th colspan="2">Oct</th>
+            <th colspan="2">Nov</th>
+            <th colspan="2" class="mes-sep">Dic</th>
+          </tr>
+          <tr>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th>Max</th>
+            <th>Min</th><th class="mes-sep">Max</th>
           </tr>
         </thead>
         <tbody id="cuerpoTabla">
           <tr>
-            <td colspan="3" class="text-center">Selecciona los filtros para realizar la consulta.</td>
+            <td colspan="25" class="text-center">Selecciona los filtros para realizar la consulta.</td>
           </tr>
         </tbody>
+        <tfoot id="pieTabla"></tfoot>
       </table>
     </div>
   </div>
 
   <script>
     let dbSQL = null;
+    let matrizDatos = null; // Guardará los datos cargados para exportación
 
-    // Cargar sql.js y la lista de estaciones al iniciar
     document.addEventListener("DOMContentLoaded", () => {
       cargarEstaciones();
 
@@ -216,7 +275,6 @@
       });
     });
 
-    // Función para obtener estaciones.json y llenar el selector
     async function cargarEstaciones() {
       const select = document.getElementById("estacionSelect");
       try {
@@ -238,23 +296,13 @@
       }
     }
 
-    function formatearFecha(fechaIso) {
-      if (!fechaIso || fechaIso === "NA" || fechaIso === "null") return "s/d";
-      const partes = String(fechaIso).split("-");
-      if (partes.length === 3) {
-        return `${partes[2]}/${partes[1]}/${partes[0]}`;
-      }
-      return fechaIso;
-    }
+    // Al seleccionar estación, consulta los años disponibles en su SQLite
+    async function alCambiarEstacion() {
+      const estacion = document.getElementById("estacionSelect").value;
+      const anioSelect = document.getElementById("anioSelect");
 
-    async function cargarBaseDatos() {
-      const select = document.getElementById("estacionSelect");
-      const anioInput = document.getElementById("anioInput").value.trim();
-      const nombreEstacion = select.value;
-      const cuerpo = document.getElementById("cuerpoTabla");
-
-      if (!nombreEstacion) {
-        alert("Selecciona una estación.");
+      if (!estacion) {
+        anioSelect.innerHTML = '<option value="">-- Selecciona estación primero --</option>';
         return;
       }
 
@@ -263,50 +311,205 @@
         return;
       }
 
-      cuerpo.innerHTML = "<tr><td colspan='3' class='text-center'>Cargando datos...</td></tr>";
+      anioSelect.innerHTML = '<option value="">Cargando años...</option>';
 
       try {
-        const url = `${nombreEstacion}.sqlite`;
-        const response = await fetch(url);
-        
-        if (!response.ok) {
-          throw new Error(`No se encontró el archivo: ${url}`);
-        }
+        const response = await fetch(`${estacion}.sqlite`);
+        if (!response.ok) throw new Error("No se encontró el archivo SQLite de la estación.");
 
         const buffer = await response.arrayBuffer();
         const db = new dbSQL.Database(new Uint8Array(buffer));
 
-        let query = "SELECT Fecha, Tmin, Tmax FROM diarios";
+        const res = db.exec("SELECT DISTINCT strftime('%Y', Fecha) AS anio FROM diarios WHERE Fecha IS NOT NULL ORDER BY anio DESC");
         
-        if (anioInput !== "") {
-          query += ` WHERE strftime('%Y', Fecha) = '${anioInput}'`;
+        anioSelect.innerHTML = '<option value="">-- Selecciona un año --</option>';
+        if (res.length > 0) {
+          res[0].values.forEach(row => {
+            if (row[0]) {
+              const option = document.createElement("option");
+              option.value = row[0];
+              option.textContent = row[0];
+              anioSelect.appendChild(option);
+            }
+          });
         }
+      } catch (err) {
+        console.error("Error al obtener años:", err);
+        anioSelect.innerHTML = '<option value="">Error al obtener años</option>';
+      }
+    }
 
-        query += " ORDER BY Fecha ASC";
+    function obtenerColorTemperatura(temp) {
+      if (temp === null || temp === undefined || isNaN(temp)) return "";
 
+      const minT = -10;
+      const midT = 15;
+      const maxT = 40;
+
+      let r, g, b;
+
+      if (temp <= midT) {
+        const factor = Math.max(0, Math.min(1, (temp - minT) / (midT - minT)));
+        r = Math.round(0 + factor * (46 - 0));
+        g = Math.round(100 + factor * (204 - 100));
+        b = Math.round(255 + factor * (113 - 255));
+      } else {
+        const factor = Math.max(0, Math.min(1, (temp - midT) / (maxT - midT)));
+        r = Math.round(46 + factor * (231 - 46));
+        g = Math.round(204 + factor * (76 - 204));
+        b = Math.round(113 + factor * (60 - 113));
+      }
+
+      return `rgba(${r}, ${g}, ${b}, 0.77)`;
+    }
+
+    async function cargarBaseDatos() {
+      const nombreEstacion = document.getElementById("estacionSelect").value;
+      const anioInput = document.getElementById("anioSelect").value;
+      const cuerpo = document.getElementById("cuerpoTabla");
+      const pie = document.getElementById("pieTabla");
+      const btnExportar = document.getElementById("btnExportar");
+
+      if (!nombreEstacion) {
+        alert("Selecciona una estación.");
+        return;
+      }
+
+      if (!anioInput) {
+        alert("Por favor selecciona un año.");
+        return;
+      }
+
+      cuerpo.innerHTML = "<tr><td colspan='25' class='text-center'>Cargando datos...</td></tr>";
+      pie.innerHTML = "";
+      btnExportar.style.display = "none";
+
+      try {
+        const response = await fetch(`${nombreEstacion}.sqlite`);
+        if (!response.ok) throw new Error(`No se encontró el archivo: ${nombreEstacion}.sqlite`);
+
+        const buffer = await response.arrayBuffer();
+        const db = new dbSQL.Database(new Uint8Array(buffer));
+
+        const query = `SELECT Fecha, Tmin, Tmax FROM diarios WHERE strftime('%Y', Fecha) = '${anioInput}' ORDER BY Fecha ASC`;
         const res = db.exec(query);
-        cuerpo.innerHTML = "";
+
+        matrizDatos = Array.from({ length: 31 }, () => 
+          Array.from({ length: 12 }, () => ({ tmin: null, tmax: null }))
+        );
 
         if (res.length > 0) {
-          const filas = res[0].values;
-          
-          filas.forEach(fila => {
-            const fechaVal = formatearFecha(fila[0]);
-            const tminVal  = (fila[1] === null || fila[1] === undefined || fila[1] === "NA") ? "s/d" : fila[1];
-            const tmaxVal  = (fila[2] === null || fila[2] === undefined || fila[2] === "NA") ? "s/d" : fila[2];
+          res[0].values.forEach(fila => {
+            const fechaStr = fila[0];
+            if (!fechaStr) return;
 
-            const tr = document.createElement("tr");
-            tr.innerHTML = `<td>${fechaVal}</td><td>${tminVal}</td><td>${tmaxVal}</td>`;
-            cuerpo.appendChild(tr);
+            const partes = fechaStr.split("-");
+            if (partes.length === 3) {
+              const mes = parseInt(partes[1], 10) - 1;
+              const dia = parseInt(partes[2], 10) - 1;
+
+              if (dia >= 0 && dia < 31 && mes >= 0 && mes < 12) {
+                matrizDatos[dia][mes].tmin = (fila[1] !== null && fila[1] !== "NA") ? parseFloat(fila[1]) : null;
+                matrizDatos[dia][mes].tmax = (fila[2] !== null && fila[2] !== "NA") ? parseFloat(fila[2]) : null;
+              }
+            }
           });
+
+          cuerpo.innerHTML = "";
+          for (let d = 0; d < 31; d++) {
+            const tr = document.createElement("tr");
+            let htmlFila = `<td class="col-dia">${d + 1}</td>`;
+
+            for (let m = 0; m < 12; m++) {
+              const celda = matrizDatos[d][m];
+              const tmin = celda.tmin;
+              const tmax = celda.tmax;
+
+              const bgMin = obtenerColorTemperatura(tmin);
+              const bgMax = obtenerColorTemperatura(tmax);
+
+              const valMinStr = (tmin !== null) ? tmin.toFixed(1) : "-";
+              const valMaxStr = (tmax !== null) ? tmax.toFixed(1) : "-";
+
+              const esFinDeMes = (m === 11) ? "mes-sep" : "";
+
+              htmlFila += `<td style="background-color: ${bgMin}">${valMinStr}</td>`;
+              htmlFila += `<td style="background-color: ${bgMax}" class="${esFinDeMes}">${valMaxStr}</td>`;
+            }
+
+            tr.innerHTML = htmlFila;
+            cuerpo.appendChild(tr);
+          }
+
+          // Calcular Promedios Mensuales para Tfoot
+          let htmlPromedios = `<tr><td class="col-dia">Prom.</td>`;
+          for (let m = 0; m < 12; m++) {
+            let sumaMin = 0, cantMin = 0;
+            let sumaMax = 0, cantMax = 0;
+
+            for (let d = 0; d < 31; d++) {
+              if (matrizDatos[d][m].tmin !== null) {
+                sumaMin += matrizDatos[d][m].tmin;
+                cantMin++;
+              }
+              if (matrizDatos[d][m].tmax !== null) {
+                sumaMax += matrizDatos[d][m].tmax;
+                cantMax++;
+              }
+            }
+
+            const promMin = cantMin > 0 ? (sumaMin / cantMin).toFixed(1) : "-";
+            const promMax = cantMax > 0 ? (sumaMax / cantMax).toFixed(1) : "-";
+            const esFinDeMes = (m === 11) ? "mes-sep" : "";
+
+            htmlPromedios += `<td>${promMin}</td><td class="${esFinDeMes}">${promMax}</td>`;
+          }
+          htmlPromedios += `</tr>`;
+          pie.innerHTML = htmlPromedios;
+
+          btnExportar.style.display = "inline-block";
+
         } else {
-          cuerpo.innerHTML = "<tr><td colspan='3' class='text-center'>No se encontraron registros para ese año.</td></tr>";
+          cuerpo.innerHTML = "<tr><td colspan='25' class='text-center'>No se encontraron registros para ese año.</td></tr>";
         }
 
       } catch (error) {
         console.error("Error al consultar:", error);
-        cuerpo.innerHTML = `<tr><td colspan='3' class='text-error'>Error: ${error.message}</td></tr>`;
+        cuerpo.innerHTML = `<tr><td colspan='25' class='text-error'>Error: ${error.message}</td></tr>`;
       }
+    }
+
+    function exportarCSV() {
+      if (!matrizDatos) return;
+
+      const estacion = document.getElementById("estacionSelect").value;
+      const anio = document.getElementById("anioSelect").value;
+      const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+
+      let csvContent = "Dia";
+      meses.forEach(m => {
+        csvContent += `,${m}_Tmin,${m}_Tmax`;
+      });
+      csvContent += "\n";
+
+      for (let d = 0; d < 31; d++) {
+        let fila = `${d + 1}`;
+        for (let m = 0; m < 12; m++) {
+          const tmin = matrizDatos[d][m].tmin !== null ? matrizDatos[d][m].tmin : "";
+          const tmax = matrizDatos[d][m].tmax !== null ? matrizDatos[d][m].tmax : "";
+          fila += `,${tmin},${tmax}`;
+        }
+        csvContent += fila + "\n";
+      }
+
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `${estacion}_${anio}_diarios.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   </script>
 </body>
