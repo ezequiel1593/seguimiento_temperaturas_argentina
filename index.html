@@ -246,6 +246,62 @@
             align-items: center;
             gap: 10px;
         }
+        /* BANNER METRICAS ÚLTIMO MES */
+.summary-banner {
+    background-color: #f8fafc;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.summary-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-title);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.summary-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 2px 0 0 0;
+}
+
+.summary-metrics {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.metric-item {
+    text-align: right;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-title);
+}
+
+/* Clases auxiliares para la anomalía */
+.anomaly-warm { color: #c0392b; } /* Rojo si es positiva */
+.anomaly-cold { color: #2980b9; } /* Azul si es negativa */
     </style>
 </head>
 <body>
@@ -317,6 +373,25 @@
                     <p>Acceso programatico y consultas en tiempo real: 
                         <a href="API/ArgWeatherAnalytics.html">Documentación de la API &rarr;</a>
                     </p>
+                </div>
+            </div>
+
+            <!-- RESUMEN ÚLTIMO MES -->
+            <div class="summary-banner">
+                <div>
+                    <h3 class="summary-title">Buenos Aires (Obs. Central) — Último Mes</h3>
+                    <p class="summary-subtitle">Datos correspondientes a Septiembre 2026</p>
+                </div>
+                <div class="summary-metrics">
+                    <div class="metric-item">
+                        <span class="metric-label">Temp. Media</span>
+                        <span class="metric-value">14.6 °C</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Anomalía</span>
+                        <!-- Usar .anomaly-warm para positivo (+) o .anomaly-cold para negativo (-) -->
+                        <span class="metric-value anomaly-cold">-0.3 °C</span>
+                    </div>
                 </div>
             </div>
 
