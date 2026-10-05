@@ -318,36 +318,80 @@
         <div class="main-grid">
             
             <!-- COLUMNA IZQUIERDA: MAPAS -->
-            <div class="map-card">
-                <img src="mapas/202608.png" alt="Mapa de temperatura más reciente" title="Último mapa generado">
-                <a href="mapas/mapas.html" class="btn-secondary">
-                    📁 Archivo de mapas anteriores
-                </a>
+            <div>
+                <section class="map-card">
+                    <img src="mapas/202609.png" alt="Mapa de temperatura más reciente" title="Último mapa generado">
+                    <a href="mapas/mapas.html" class="btn-secondary">
+                        📁 Archivo de mapas anteriores
+                    </a>
+                </section>
+
+                <section>
+                    <!-- RESUMEN ÚLTIMO MES -->
+                    <div class="summary-banner">
+                        <div>
+                            <h3 class="summary-title">Buenos Aires (Obs. Central) — Último Mes</h3>
+                            <p class="summary-subtitle">Datos correspondientes a Septiembre 2026</p>
+                        </div>
+                        <div class="summary-metrics">
+                            <div class="metric-item">
+                                <span class="metric-label">Temp. Media</span>
+                                <span class="metric-value">14.6 °C</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Anomalía</span>
+                                <!-- Usar .anomaly-warm para positivo (+) o .anomaly-cold para negativo (-) -->
+                                <span class="metric-value anomaly-cold">-0.3 °C</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
 
             <!-- COLUMNA DERECHA: RECURSOS Y DATOS -->
             <div>
                 <section>
-                    <h2 class="section-title">Bases de Datos & Reportes</h2>
+                    <h2 class="section-title">Bases de Datos y Reportes</h2>
                     <ul class="data-list">
                         <li>
                             <a href="medias/temperaturas_medias.html">
-                                Temperaturas Medias Mensuales, Estacionales y Anuales
+                                Temperaturas medias mensuales, estacionales y anuales
                             </a>
                         </li>
                         <li>
                             <a href="datos_diarios/indice_datos_diarios.html">
-                                Registros Diarios de Mínimas y Máximas
+                                Consulta de registros diarios de mínimas y máximas
                             </a>
                         </li>
                         <li>
                             <a href="historicos/extremosanualesnacionales.html">
-                                Extremos Nacionales por Año (Excluye bases antárticas)
+                                Extremos nacionales por año (excluye bases antárticas)
                             </a>
                         </li>
                         <li>
-                            <a href="records/records2025.txt">
-                                Récords Mensuales Caídos e Igualados (2025 - 2026)
+                            <a href="records/nuevos_records_mensuales.html">
+                                Récords mensuales caídos e igualados recientes (2025 - 2026)
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="section-title">Anomalias ponderadas al norte de los 40°S</h2>
+                    <ul class="data-list">
+                        <li>
+                            <a href="anomalias_norte_40S/tabla_tmin.html">
+                                Temperatura mínima
+                            </a>
+                        </li>
+                        <li>
+                            <a href="anomalias_norte_40S/tabla_tmax.html">
+                                Temperatura máxima
+                            </a>
+                        </li>
+                        <li>
+                            <a href="anomalias_norte_40S/Metodologia.html">
+                                Metodología
                             </a>
                         </li>
                     </ul>
@@ -376,24 +420,7 @@
                 </div>
             </div>
 
-            <!-- RESUMEN ÚLTIMO MES -->
-            <div class="summary-banner">
-                <div>
-                    <h3 class="summary-title">Buenos Aires (Obs. Central) — Último Mes</h3>
-                    <p class="summary-subtitle">Datos correspondientes a Septiembre 2026</p>
-                </div>
-                <div class="summary-metrics">
-                    <div class="metric-item">
-                        <span class="metric-label">Temp. Media</span>
-                        <span class="metric-value">14.6 °C</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="metric-label">Anomalía</span>
-                        <!-- Usar .anomaly-warm para positivo (+) o .anomaly-cold para negativo (-) -->
-                        <span class="metric-value anomaly-cold">-0.3 °C</span>
-                    </div>
-                </div>
-            </div>
+            
 
         </div>
 
