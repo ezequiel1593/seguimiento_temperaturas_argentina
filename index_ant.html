@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Seguimiento, estadísticas y análisis de datos de temperatura en Argentina.">
+    <title>Seguimiento de Temperaturas en Argentina</title>
+    
+    <style>
+        :root {
+            --bg-main: #eef2f5;
+            --card-bg: #ffffff;
+            --text-title: #1a202c;
+            --text-body: #4a5568;
+            --text-muted: #718096;
+            --accent: #c0392b; /* Rojo meteorológico/térmico sobrio */
+            --accent-hover: #a02e21;
+            --border: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 40px 15px;
+            color: var(--text-body);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.5;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            max-width: 860px;
+            width: 100%;
+            padding: 35px 40px;
+            box-sizing: border-box;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--text-title);
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .header p {
+            margin: 6px 0 0 0;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* GRID PRINCIPAL */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 35px;
+            align-items: start;
+        }
+
+        @media (max-width: 720px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* COLUMNA IZQ: MAPA DESTACADO */
+        .map-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .map-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            color: var(--text-title);
+            background-color: #ffffff;
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #edf2f7;
+            border-color: #cbd5e0;
+        }
+
+        /* COLUMNA DER: SECCIONES Y LINKS */
+        .section-title {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-title);
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .data-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+
+        .data-list li {
+            margin-bottom: 8px;
+        }
+
+        .data-list a {
+            display: block;
+            padding: 8px 12px;
+            background-color: #f8fafc;
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--text-title);
+            border-radius: 0 4px 4px 0;
+            color: var(--text-title);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .data-list a:hover {
+            background-color: #edf2f7;
+            border-left-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* DESTACADO API */
+        .api-box {
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 14px 16px;
+            margin-top: 10px;
+        }
+
+        .api-box-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .badge-api {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .api-box p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-body);
+        }
+
+        .api-box a {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .api-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* CAFECITO SOBRIO */
+        .support-card {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .support-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+        }
+
+        .btn-cafecito {
+            background-color: #d35400;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.82rem;
+            transition: background 0.2s ease;
+        }
+
+        .btn-cafecito:hover {
+            background-color: #b94600;
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        /* BANNER METRICAS ÚLTIMO MES */
+.summary-banner {
+    background-color: #f8fafc;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.summary-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-title);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.summary-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 2px 0 0 0;
+}
+
+.summary-metrics {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.metric-item {
+    text-align: right;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-title);
+}
+
+/* Clases auxiliares para la anomalía */
+.anomaly-warm { color: #c0392b; } /* Rojo si es positiva */
+.anomaly-cold { color: #2980b9; } /* Azul si es negativa */
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HEADER -->
+        <header class="header">
+            <h1>Seguimiento de Temperaturas en Argentina</h1>
+            <p>Portal de datos, mapas y registros históricos</p>
+        </header>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="main-grid">
+            
+            <!-- COLUMNA IZQUIERDA: MAPAS -->
+            <div>
+                <section class="map-card">
+                    <img src="mapas/202609.png" alt="Mapa de temperatura más reciente" title="Último mapa generado">
+                    <a href="mapas/mapas.html" class="btn-secondary">
+                        📁 Archivo de mapas anteriores
+                    </a>
+                </section>
+
+                <section>
+                    <!-- RESUMEN ÚLTIMO MES -->
+                    <div class="summary-banner">
+                        <div>
+                            <h3 class="summary-title">Buenos Aires (Obs. Central) — Último Mes</h3>
+                            <p class="summary-subtitle">Datos correspondientes a Septiembre 2026</p>
+                        </div>
+                        <div class="summary-metrics">
+                            <div class="metric-item">
+                                <span class="metric-label">Temp. Media</span>
+                                <span class="metric-value">14.6 °C</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Anomalía</span>
+                                <!-- Usar .anomaly-warm para positivo (+) o .anomaly-cold para negativo (-) -->
+                                <span class="metric-value anomaly-cold">-0.3 °C</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- COLUMNA DERECHA: RECURSOS Y DATOS -->
+            <div>
+                <section>
+                    <h2 class="section-title">Bases de Datos y Reportes</h2>
+                    <ul class="data-list">
+                        <li>
+                            <a href="medias/temperaturas_medias.html">
+                                Temperaturas medias mensuales, estacionales y anuales
+                            </a>
+                        </li>
+                        <li>
+                            <a href="datos_diarios/indice_datos_diarios.html">
+                                Consulta de registros diarios de mínimas y máximas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="historicos/extremosanualesnacionales.html">
+                                Extremos nacionales por año (excluye bases antárticas)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="records/nuevos_records_mensuales.html">
+                                Récords mensuales caídos e igualados recientes (2025 - 2026)
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="section-title">Anomalias ponderadas al norte de los 40°S</h2>
+                    <ul class="data-list">
+                        <li>
+                            <a href="anomalias_norte_40S/tabla_tmin.html">
+                                Temperatura mínima
+                            </a>
+                        </li>
+                        <li>
+                            <a href="anomalias_norte_40S/tabla_tmax.html">
+                                Temperatura máxima
+                            </a>
+                        </li>
+                        <li>
+                            <a href="anomalias_norte_40S/Metodologia.html">
+                                Metodología
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="section-title">Mapas Interactivos (+250 Estaciones)</h2>
+                    <ul class="data-list">
+                        <li>
+                            <a href="mapas/mapas_interactivos.html">
+                                Visualizador Interactivo de Temperatura Media
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- MÓDULO API -->
+                <div class="api-box">
+                    <div class="api-box-header">
+                        <span style="font-weight: 700; font-size: 0.85rem; color: #0f172a;">Servicio de Datos</span>
+                        <span class="badge-api">REST API</span>
+                    </div>
+                    <p>Acceso programatico y consultas en tiempo real: 
+                        <a href="API/ArgWeatherAnalytics.html">Documentación de la API &rarr;</a>
+                    </p>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+        <!-- FOOTER / SUPPORT -->
+        <div class="support-card">
+            <div class="support-info">
+                <span>☕</span>
+                <span><b>¿Te resulta útil el proyecto?</b> Podés colaborar con su mantenimiento.</span>
+            </div>
+            <a href="https://cafecito.app/argen_weather" target="_blank" class="btn-cafecito">
+                APOYAR EN CAFECITO
+            </a>
+        </div>
+
+    </div>
+
+    <!-- PIE DE PÁGINA Y CONTADOR -->
+    <footer class="footer">
+        <div>© 2026 Registro de Temperaturas en Argentina</div>
+        <img src="https://hits.dwyl.com/ezequiel1593/seguimiento_temperaturas_argentina.svg" alt="Contador de Visitas">
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Temperaturas medias mensuales, estacionales y anuales en Argentina.">
+    <title>Records - Seguimiento de Temperaturas en Argentina</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, Arial, Geneva, sans-serif;
+            font-size: 13px;
+            margin: 0;
+            padding: 10px;
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- ENCABEZADO PRINCIPAL --- */
+        .header-main {
+            text-align: center;
+            padding: 15px 0 10px 0;
+            border-bottom: 2px solid #3b5998;
+            margin-bottom: 20px;
+        }
+
+        .header-main h1 {
+            margin: 0;
+            font-size: 22px;
+            color: #111111;
+            font-weight: bold;
+        }
+
+        .header-main .subtitle {
+            margin-top: 5px;
+            font-size: 13px;
+            color: #555555;
+        }
+
+        /* --- MENÚ DE NAVEGACIÓN --- */
+        .nav-bar {
+            display: flex;
+            background-color: #dbe4f0;
+            border-top: 1px solid #7a98be;
+            border-bottom: 2px solid #3b5998;
+            padding: 0;
+            margin: 15px 0 25px 0;
+            list-style: none;
+        }
+
+        .nav-bar li {
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid #b2c4dc;
+        }
+
+        .nav-bar li:last-child {
+            border-right: none;
+        }
+
+        .nav-bar a {
+            display: block;
+            padding: 8px 4px;
+            color: #1a3366;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 1.2;
+            background-color: #e3ebf5;
+        }
+
+        .nav-bar a:hover {
+            background-color: #c9d8ec;
+        }
+
+        .nav-bar li.active a {
+            background-color: #8c9ebf;
+            color: #ffffff;
+        }
+
+        /* --- ENCABEZADO DE SECCIÓN Y METADATOS --- */
+        .section-header-box {
+            margin-bottom: 25px;
+        }
+
+        .section-header-box h2 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #0d2c54;
+            margin: 0 0 10px 0;
+        }
+
+        .meta-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 12px;
+            color: #444;
+            background-color: #f8f9fa;
+            border: 1px solid #d0d7de;
+            padding: 10px 15px;
+        }
+
+        .meta-bar a {
+            color: #003399;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .meta-bar a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- TÍTULOS DE SECCIÓN --- */
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0d2c54;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Tarjetitas --- */
+        .report-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .report-item {
+            display: block;
+            padding: 12px 15px;
+            background-color: #ffffff;
+            border: 1px solid #d0d7de;
+            border-left: 4px solid #003366;
+            color: #111111;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            transition: background-color 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+        }
+
+        .report-item:hover {
+            background-color: #f4f7fa;
+            border-color: #a0b5d0;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- TÍTULO PRINCIPAL Y SUBTÍTULO -->
+        <header class="header-main">
+            <h1>Seguimiento de Temperaturas en Argentina</h1>
+            <div class="subtitle">Portal de datos, mapas y registros históricos</div>
+        </header>
+
+        <!-- MENÚ DE NAVEGACIÓN (Idéntico al Inicio) -->
+        <nav>
+            <ul class="nav-bar">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../medias/temperaturas_medias.html">Reportes</a></li>
+                <li><a href="../anomalias_norte_40S/anomalias_index.html">Anomalías</a></li>
+                <li class="active"><a href="#">Records</a></li>
+                <li><a href="../mapas/mapas_interactivos.html">Mapas interactivos</a></li>
+                <li><a href="../datos_diarios/indice_datos_diarios.html">Base de datos</a></li>
+            </ul>
+        </nav>
+        
+        <!-- CONTENIDO -->
+         <div class="report-list">
+            <h2>Records</h2>
+                <a href="../historicos/extremosanualesnacionales.html" class="report-item">Extremos nacionales por año (excluye bases antárticas)</a>
+                <a href="nuevos_records_mensuales.html" class="report-item">Récords mensuales caídos e igualados recientes (2025 - 2026)</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
