@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -172,7 +173,7 @@
             color: #333;
             font-weight: bold;
             font-size: 12px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
             margin-bottom: 20px;
         }
 
@@ -212,7 +213,7 @@
             font-weight: bold;
             font-size: 13px;
             transition: background-color 0.2s;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
         }
 
         .report-item:hover {
@@ -220,8 +221,23 @@
             border-color: #a0b5d0;
         }
         
+        /* Link de descarga */
+        .link-decorated {
+            font-family: sans-serif;
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+            padding-bottom: 2px;
+        }
+
+        .link-decorated:hover {
+            border-bottom-color: #0969da;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -243,10 +259,10 @@
                 <li><a href="../datos_diarios/indice_datos_diarios.html">Base de datos</a></li>
             </ul>
         </nav>
-        
+
         <!-- CONTENIDO EN DOS COLUMNAS -->
         <div class="content-layout">
-            
+
             <!-- COLUMNA IZQUIERDA (Mapa y Archivo) -->
             <div class="col-left">
                 <div class="map-box">
@@ -258,14 +274,32 @@
             <div class="col-right">
                 <h2 class="section-title">Mapas de anomalías</h2>
                 <div class="report-list">
+                    <p>Mapas de anomalías de la temperatura media mensual, respecto al período 1991-2020, basado en los
+                        datos seleccionados de la sección <b>Reportes</b>.</p>
                     <a href="../mapas/mapas.html" class="report-item">Archivo de mapas de anomalías</a>
                 </div>
 
-                <h2 class="section-title">Anomalías ponderadas al norte de los 40°S</h2>
+                <h2 class="section-title">Anomalías ponderadas al norte de los 40°S, Versión 3</h2>
                 <div class="report-list">
-                    <a href="tabla_tmin.html" class="report-item">Temperatura mínima</a>
-                    <a href="tabla_tmax.html" class="report-item">Temperatura máxima</a>
-                    <a href="Metodologia.html" class="report-item">Metodología</a>
+                    <p>Este proyecto tiene por objeto la creación de datos reticulados de anomalías de temperatura
+                        mínima y máxima, a nivel mensual, desde el año 1966, para la Argentina continental al norte 
+                        de los 40°S, en zonas con una altura promedio inferior a 2000 m con respecto al nivel medio 
+                        del mar. Luego, estos datos reticulados son ponderados de acuerdo al área de cada cuadrícula, 
+                        para obtener una anomalía ponderada general de la región.
+                    </p>
+                    <a href="tabla_tmin.html" class="report-item">Anomalías ponderadas de la temperatura mínima media mensual</a>
+                    <a href="tabla_tmax.html" class="report-item">Anomalías ponderadas de la temperatura máxima media mensual</a>
+                    <a href="Documentacion_v3.html" class="report-item">Metodología</a>
+                    <p><a href="Grilla_Anomalias_1966_2026.parquet" class="link-decorated" download>Descargar datos reticulados (archivo .parquet)</a></p>
+                </div>
+                
+
+                <h2 class="section-title">Anomalías ponderadas al norte de los 40°S, Versión 4</h2>
+                <div class="report-list">
+                    <p>Este nuevo proyecto en desarrollo propone la homogeneización de las series históricas y la 
+                        extensión del período de estudio hasta 1931. También se ofrecerán mapas para consultas.
+                    </p>
+                    <p><b>Próximamente</b></p>
                 </div>
             </div>
 
@@ -274,4 +308,5 @@
     </div>
 
 </body>
+
 </html>
